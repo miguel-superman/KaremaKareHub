@@ -1,4 +1,5 @@
 import {
+    count,
     doc,
     serverTimestamp,
     setDoc
@@ -18,6 +19,9 @@ export async function createWorkerProfile(
     application,
     uploadedDocs
 ) {
+
+    delete application.account.password;
+    delete application.account.confirm;
 
     await setDoc(
         doc(db, "healthcareWorkers", uid),
@@ -63,6 +67,8 @@ export async function createWorkerProfile(
                 rejectionReason: null
 
             },
+
+            country: "Jamaica",
 
             createdAt: serverTimestamp(),
 

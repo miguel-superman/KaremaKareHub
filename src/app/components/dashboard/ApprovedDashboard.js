@@ -2,11 +2,17 @@ import {
   CalendarDays,
   Wallet,
   MessageSquare,
-  Users
+  Users,
+  ArrowRight
 } from "lucide-react";
 import Navbar from "../Navbar";
+import { useRouter } from "next/navigation";
+
 
 export default function ApprovedDashboard({ worker }) {
+
+  const router = useRouter();
+
   return (
     <main className="min-h-screen bg-slate-50">
         <Navbar />
@@ -71,17 +77,56 @@ export default function ApprovedDashboard({ worker }) {
 
           <div className="grid md:grid-cols-3 gap-4 mt-8">
 
-            <ActionCard title="Appointments" />
+            {/* <ActionCard title="Appointments" /> */}
 
-            <ActionCard title="Calendar" />
+            {/* <ActionCard title="Calendar" /> */}
 
-            <ActionCard title="Messages" />
+            {/* <ActionCard title="Messages" /> */}
+            {/* <ActionCard
+                title="Messages"
+                onClick={() => router.push("/dashboard/messages")}
+            /> */}
 
-            <ActionCard title="Payments" />
+            {/* <ActionCard title="Payments" /> */}
 
-            <ActionCard title="Availability" />
+            {/* <ActionCard title="Availability" /> */}
 
-            <ActionCard title="Profile" />
+            {/* <ActionCard title="Profile" /> */}
+
+            <ActionCard
+                title="Messages"
+                description="View and reply to client messages"
+                icon={MessageSquare}
+                onClick={() => router.push("/dashboard/messages")}
+            />
+
+            <ActionCard
+                title="Appointments"
+                description="Manage upcoming bookings"
+                icon={CalendarDays}
+                onClick={() => router.push("/dashboard/appointments")}
+            />
+
+            <ActionCard
+                title="Payments"
+                description="Track your earnings"
+                icon={Wallet}
+                onClick={() => router.push("/dashboard/payments")}
+            />
+
+            <ActionCard
+                title="Availability"
+                description="Update your working schedule"
+                icon={CalendarDays}
+                onClick={() => router.push("/dashboard/availability")}
+            />
+
+            <ActionCard
+                title="Profile"
+                description="Edit your professional information"
+                icon={Users}
+                onClick={() => router.push("/dashboard/profile")}
+            />
 
           </div>
 
@@ -119,22 +164,105 @@ function StatCard({ icon: Icon, label, value }) {
   );
 }
 
-function ActionCard({ title }) {
-  return (
-    <button className="border rounded-2xl p-5 bg-white hover:bg-slate-50 text-left transition">
+// function ActionCard({ title ,description,
 
-      <div className="font-semibold">
+//     icon: Icon,
 
-        {title}
+//     onClick }) {
+//   return (
+//     <button className="border rounded-2xl p-5 bg-white hover:bg-slate-50 text-left transition" onClick={onClick}>
 
-      </div>
+//       <div className="font-semibold">
 
-      <p className="text-sm text-gray-500 mt-1">
+//         {title}
 
-        Open {title.toLowerCase()}
+//       </div>
 
-      </p>
+//       <p className="text-sm text-gray-500 mt-1">
 
-    </button>
-  );
+//         Open {title.toLowerCase()}
+
+//       </p>
+
+//     </button>
+//   );
+// }
+
+
+function ActionCard({
+
+    title,
+
+    description,
+
+    icon: Icon,
+
+    onClick
+
+}) {
+
+    return (
+
+        <button
+
+            onClick={onClick}
+
+            className="
+            bg-white
+            border
+            rounded-3xl
+            p-6
+            hover:shadow-xl
+            hover:border-emerald-300
+            transition-all
+            duration-200
+            text-left
+            "
+
+        >
+
+            <div className="flex justify-between items-start">
+
+                <div
+                    className="
+                    w-12
+                    h-12
+                    rounded-2xl
+                    bg-emerald-100
+                    flex
+                    items-center
+                    justify-center
+                    "
+                >
+
+                    <Icon
+                        className="text-emerald-600"
+                        size={22}
+                    />
+
+                </div>
+
+                <ArrowRight
+                    className="text-gray-400"
+                    size={20}
+                />
+
+            </div>
+
+            <h3 className="font-bold text-lg mt-6">
+
+                {title}
+
+            </h3>
+
+            <p className="text-gray-500 mt-2 text-sm">
+
+                {description}
+
+            </p>
+
+        </button>
+
+    );
+
 }

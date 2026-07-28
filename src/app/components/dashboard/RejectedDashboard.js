@@ -1,8 +1,17 @@
+
+"use client"
 import { AlertCircle } from "lucide-react";
+import { useState } from "react";
+import ApplicationEditModal from "./ApplicationEditModal";
+import Navbar from "../Navbar";
 
 export default function RejectedDashboard({ worker }) {
+
+  const [editOpen,setEditOpen] = useState(false);
   return (
     <main className="min-h-screen bg-slate-50">
+
+      <Navbar />
 
       <div className="max-w-3xl mx-auto px-6 py-10">
 
@@ -58,11 +67,24 @@ export default function RejectedDashboard({ worker }) {
 
           <div className="mt-8 flex flex-wrap gap-3">
 
-            <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl">
+            <button
 
-              Upload Updated Documents
+              onClick={()=>setEditOpen(true)}
 
-            </button>
+              className="
+              bg-emerald-500
+              hover:bg-emerald-600
+              text-white
+              px-6
+              py-3
+              rounded-xl
+              "
+
+              >
+
+              Fix Application
+
+              </button>
 
             <button className="border px-6 py-3 rounded-xl">
 
@@ -75,6 +97,16 @@ export default function RejectedDashboard({ worker }) {
         </div>
 
       </div>
+
+      <ApplicationEditModal
+
+        worker={worker}
+
+        open={editOpen}
+
+        close={()=>setEditOpen(false)}
+
+        />
 
     </main>
   );

@@ -17,6 +17,8 @@ export default function Step5Review({
     const [error,setError]=useState("");
     const [loading,setLoading]=useState(false);
 
+    console.log("application ", application)
+
 
     async function submitApplication() {
 
@@ -241,6 +243,20 @@ export default function Step5Review({
 
             <div className="bg-slate-50 rounded-lg p-5 mt-3">
 
+            {application.documents.governmentId.length === 0 ? (
+
+
+
+                 <p>
+
+            ✓ Government ID Uploaded
+
+            </p>
+
+
+            ):<>
+            
+            </> }
 
             <p>
 

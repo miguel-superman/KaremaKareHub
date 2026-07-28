@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { toast } from 'sonner';
 import { HeartPulse } from 'lucide-react';
 import { getWorker } from "../lib/user";
+import { getUserRole } from "../lib/auth/getUserRole";
 
 const App = () => {
 const router = useRouter();
@@ -122,27 +123,47 @@ const { login } = useAuth();
     try {
 
 
+        // const user = await login(
+        //     email,
+        //     password
+        // );
+
+
+        // const worker =
+        //     await getWorker(user.uid);
+
+
+
+        // if(!worker){
+
+        //     toast.error(
+        //         "Worker profile not found."
+        //     );
+
+        //     return;
+
+        // }
+
+
+
+        // toast.success(
+        //     "Welcome back!"
+        // );
+
+
+        // router.push(
+        //     "/dashboard"
+        // );
+
         const user = await login(
             email,
             password
         );
 
 
-        const worker =
-            await getWorker(user.uid);
-
-
-
-        if(!worker){
-
-            toast.error(
-                "Worker profile not found."
-            );
-
-            return;
-
-        }
-
+        const role = await getUserRole(
+            user.uid
+        );
 
 
         toast.success(
@@ -150,10 +171,23 @@ const { login } = useAuth();
         );
 
 
+
+    if(role === "admin") {
+
+        router.push(
+            "/admin"
+        );
+
+
+    }  else {
+
+
         router.push(
             "/dashboard"
         );
 
+
+    }
 
 
     } catch(err){

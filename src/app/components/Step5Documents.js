@@ -348,6 +348,7 @@ export default function Step5Documents({
         profilePhoto: null,
         governmentId: null,
         professionalLicense: null,
+        policeRecord: null,
         certificates: [],
         employmentLetter: null,
 
@@ -552,6 +553,17 @@ export default function Step5Documents({
                     handleFile("employmentLetter", file)
                 }
                 uploaded={!!form.employmentLetter}
+            />
+
+            {/* Employment Letter */}
+
+            <DocumentCard
+                title="Police Record (for childcare and elderly care)"
+                subtitle="Criminal record verification"
+                onUpload={(file) =>
+                    handleFile("policeRecord", file)
+                }
+                uploaded={!!form.policeRecord}
             />
 
             {/* Certificates */}

@@ -83,11 +83,11 @@ export function validateProfessional(data) {
 
 
 
-    if (!data.licenseNumber) {
+    // if (!data.licenseNumber) {
 
-        return "Professional license number is required.";
+    //     return "Professional license number is required.";
 
-    }
+    // }
 
 
 

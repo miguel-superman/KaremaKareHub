@@ -297,14 +297,13 @@ export default function ApplyPage() {
 
 
 
-
             {step === 4 && (
 
                 <Step4Rates
 
                 data={application.documents}
 
-                save={(data)=>saveStep("documents",data)}
+                save={(data)=>saveStep("rates",data)}
 
                 previous={()=>setStep(3)}
 

@@ -31,9 +31,10 @@ export default function Navbar() {
               <Link href="/dashboard">
                 <Button variant="ghost" className="text-slate-700">Dashboard</Button>
               </Link>
-              <Link href="/admin">
+              {/* <Link href="/admin">
                 <Button variant="ghost" className="text-slate-700">Admin</Button>
-              </Link>
+              </Link> */}
+              
               <Button variant="outline" onClick={handleLogout} className="gap-2">
                 <LogOut className="h-4 w-4" /> Sign out
               </Button>

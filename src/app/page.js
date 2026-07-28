@@ -28,7 +28,7 @@ const App = () => {
               CareConnect helps independent healthcare workers — RNs, LPNs, CNAs, HHAs and caregivers — submit credentials, set their own daily rates, and land trusted freelance shifts.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/signup">
+              <Link href="/apply">
                 <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-600/20">
                   Start your application
                 </Button>

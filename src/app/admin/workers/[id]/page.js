@@ -25,7 +25,15 @@ import {
 from "../../../lib/admin/admin";
 import Navbar from "@/app/components/Navbar";
 
+import WorkerHeader from "@/app/components/admin/WorkerHeader";
+import ProfileCard from "@/app/components/admin/ProfileCard";
+import ProfessionalCard from "@/app/components/admin/ProfessionalCard";
+import RatesCard from "@/app/components/admin/RatesCard";
+import DocumentsCard from "@/app/components/admin/DocumentsCard";
+import ActionPanel from "@/app/components/admin/ActionPanel";
 import { useParams } from "next/navigation";
+
+
 
 
 
@@ -137,9 +145,12 @@ const [message,setMessage] = useState("");
 
 
     return (
+ <div>
 
-    <div className="max-w-5xl mx-auto py-10">
-        <Navbar />
+
+ <Navbar />
+ <div className="max-w-5xl mx-auto py-10">
+        {/* <Navbar />
 
 
     <h1 className="text-3xl font-bold">
@@ -274,10 +285,35 @@ const [message,setMessage] = useState("");
         </button>
 
 
-        </div>
+        </div> */}
 
+        {/* <Navbar /> */}
+
+        <div className="grid lg:grid-cols-3 gap-8 mt-8">
+
+            <div className="lg:col-span-2 space-y-8">
+
+                <ProfileCard worker={worker} />
+
+                <ProfessionalCard worker={worker} />
+
+                <RatesCard worker={worker} />
+
+                <DocumentsCard worker={worker} />
+
+            </div>
+
+            <div>
+
+                <ActionPanel worker={worker} />
+
+            </div>
+
+</div>
 
     </div>
+ </div>
+    
 
 
     );
