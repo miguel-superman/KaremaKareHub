@@ -112,7 +112,7 @@ export default function MessagesPage(){
 
         <div className="
             min-h-screen
-            bg-slate-50
+            bg-gradient-to-b from-emerald-50/50 via-white to-white
             p-6
             ">
 
@@ -189,7 +189,7 @@ export default function MessagesPage(){
 
                     router.push(
 
-                    `/dashboard/messages/${chat.id}`
+                    `/dashboard/messages/chatId?chatId=${chat.id}`
 
                     )
 

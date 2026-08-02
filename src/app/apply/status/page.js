@@ -3,7 +3,7 @@ export default function ApplicationStatus(){
 
 return (
 
-<main className="min-h-screen bg-slate-50 flex items-center justify-center">
+<main className="min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-white flex items-center justify-center">
 
 
 <div className="bg-white shadow-lg rounded-3xl p-10 text-center max-w-lg">

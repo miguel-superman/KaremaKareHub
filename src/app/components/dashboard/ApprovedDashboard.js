@@ -1,18 +1,43 @@
+"use client"
 import {
   CalendarDays,
   Wallet,
   MessageSquare,
   Users,
-  ArrowRight
+  ArrowRight,
+  CreditCard
 } from "lucide-react";
 import Navbar from "../Navbar";
 import { useRouter } from "next/navigation";
+
+import { useEffect, useState } from "react";
+import { getDashboardStats } from "@/app/lib/dashboard/dashboardService";
 
 
 export default function ApprovedDashboard({ worker }) {
 
   const router = useRouter();
 
+  const [stats,setStats]=useState({
+
+    appointmentsToday:0,
+
+    unreadMessages:0,
+
+    pendingAppointments:0
+
+  });
+
+
+  useEffect(()=>{
+
+    if(!worker?.uid)
+        return;
+
+    getDashboardStats(worker.uid)
+        .then(setStats);
+
+  },[worker]);
   return (
     <main className="min-h-screen bg-slate-50">
         <Navbar />
@@ -65,13 +90,32 @@ export default function ApprovedDashboard({ worker }) {
 
           <div className="grid md:grid-cols-4 gap-4 mt-8">
 
-            <StatCard icon={CalendarDays} label="Appointments Today" value="3" />
+            {/* <StatCard icon={CalendarDays} label="Appointments Today" value="3" />
 
             <StatCard icon={MessageSquare} label="Unread Messages" value="2" />
 
-            <StatCard icon={Users} label="Pending Requests" value="4" />
+            <StatCard icon={Users} label="Pending Requests" value="4" /> */}
 
-            <StatCard icon={Wallet} label="This Week" value="J$48,000" />
+            {/* <StatCard icon={Wallet} label="This Week" value="J$48,000" /> */}
+
+            <StatCard
+              icon={CalendarDays}
+              label="Appointments Today"
+              value={stats.appointmentsToday}
+          />
+
+          <StatCard
+              icon={MessageSquare}
+              label="Unread Messages"
+              value={stats.unreadMessages}
+          />
+
+          <StatCard
+              icon={Users}
+              label="Pending Requests"
+              value={stats.pendingAppointments}
+          />
+          
 
           </div>
 
@@ -107,25 +151,27 @@ export default function ApprovedDashboard({ worker }) {
                 onClick={() => router.push("/dashboard/appointments")}
             />
 
-            <ActionCard
+            {/* <ActionCard
                 title="Payments"
                 description="Track your earnings"
                 icon={Wallet}
                 onClick={() => router.push("/dashboard/payments")}
-            />
+            /> */}
 
-            <ActionCard
-                title="Availability"
-                description="Update your working schedule"
-                icon={CalendarDays}
-                onClick={() => router.push("/dashboard/availability")}
-            />
+            
 
             <ActionCard
                 title="Profile"
                 description="Edit your professional information"
                 icon={Users}
                 onClick={() => router.push("/dashboard/profile")}
+            />
+
+            <ActionCard
+                title="Subscription"
+                description="Keep up to date with your subscription"
+                icon={CreditCard}
+                onClick={() => router.push(`/dashboard/subscription/renewal?workerId=${worker.uid}`)}
             />
 
           </div>

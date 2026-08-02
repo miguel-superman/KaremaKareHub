@@ -13,6 +13,11 @@ from "firebase/firestore";
 
 import {db} from "../../lib/firebase/firebase";
 
+import {
+    ClipboardCheck,
+    SearchX
+} from "lucide-react";
+
 
 
 export default function WorkerTable(){
@@ -93,20 +98,42 @@ const [loading,setLoading]=useState(true);
 
 
 
+    if (loading) {
 
-if(loading){
+        return (
 
-    return (
+            <div className="bg-white rounded-2xl border shadow mt-8 p-8">
 
-    <p>
+                <div className="animate-pulse space-y-6">
 
-    Loading applications...
+                    <div className="h-8 w-64 bg-gray-200 rounded-lg"></div>
 
-    </p>
+                    {[1,2,3,4].map((item)=>(
 
-    )
+                        <div
+                            key={item}
+                            className="grid grid-cols-4 gap-6 items-center"
+                        >
 
-}
+                            <div className="h-5 bg-gray-200 rounded"></div>
+
+                            <div className="h-5 bg-gray-200 rounded"></div>
+
+                            <div className="h-5 bg-gray-200 rounded"></div>
+
+                            <div className="h-5 w-20 bg-gray-200 rounded"></div>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </div>
+
+        );
+
+    }
 
     function StatusBadge({status}){
 
@@ -139,6 +166,60 @@ if(loading){
 
     }
 
+
+    if (workers.length === 0) {
+
+        return (
+
+            <div className="bg-white rounded-3xl shadow border mt-8">
+
+                <div className="flex flex-col items-center justify-center py-20 px-8 text-center">
+
+                    <div className="w-24 h-24 rounded-full bg-emerald-100 flex items-center justify-center">
+
+                        <ClipboardCheck
+                            size={48}
+                            className="text-emerald-600"
+                        />
+
+                    </div>
+
+                    <h2 className="mt-8 text-2xl font-bold text-gray-900">
+
+                        No Verification Requests
+
+                    </h2>
+
+                    <p className="mt-3 text-gray-500 max-w-md">
+
+                        You're all caught up.
+
+                        There are currently no healthcare professionals waiting for verification.
+
+                    </p>
+
+                    <div className="mt-8 flex items-center gap-2 rounded-xl bg-slate-50 border px-5 py-3">
+
+                        <SearchX
+                            size={18}
+                            className="text-gray-400"
+                        />
+
+                        <span className="text-gray-500">
+
+                            New applications will appear here automatically.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        );
+
+    }
 
 
 
@@ -176,7 +257,7 @@ if(loading){
         </th>
 
 
-        <th>
+        <th className="p-4 text-left">
 
         Action
 
@@ -254,7 +335,7 @@ if(loading){
 
         <a
 
-        href={`/admin/workers/${worker.id}`}
+        href={`/admin/verification/workers?=${worker.id}`}
 
         className="text-emerald-600 font-medium"
 

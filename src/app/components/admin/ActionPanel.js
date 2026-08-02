@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 
-export default function ActionPanel({ worker }) {
+export default function ActionPanel({ worker,subscriptionExpiry }) {
 
 
     const [notes,setNotes] = useState(
@@ -44,6 +44,20 @@ export default function ActionPanel({ worker }) {
                 worker.id
             );
 
+            if(status === "Approved" && subscriptionExpiry) {
+
+                await updateDoc(ref,{
+
+                    "verification.status": status,
+
+                    "verification.reviewedAt":
+                        serverTimestamp(),
+
+                    "subscriptionExpiry": subscriptionExpiry
+
+                });
+            } else {
+
 
             await updateDoc(ref,{
 
@@ -53,8 +67,7 @@ export default function ActionPanel({ worker }) {
                     serverTimestamp(),
 
             });
-
-
+        }
             setMessage(
                 `Worker ${status}`
             );
@@ -244,7 +257,7 @@ Application Decision
 
 disabled={loading}
 
-onClick={()=>updateStatus("approved")}
+onClick={()=>updateStatus("Approved")}
 
 className="
 flex
@@ -273,7 +286,7 @@ Approve
 
 disabled={loading}
 
-onClick={()=>updateStatus("rejected")}
+onClick={()=>updateStatus("Rejected")}
 
 className="
 flex

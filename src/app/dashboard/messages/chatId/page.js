@@ -1,5 +1,8 @@
 "use client";
 
+// import { useSearchParams } from "next/navigation";
+
+
 
 import {
     useEffect,
@@ -35,15 +38,26 @@ const {
 }=useAuth();
 
 
+
+// const searchParams = useSearchParams();
+// const chatId = searchParams.get("chatId");
+
+const [chatId, setChatId] = useState(null);
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        setChatId(params.get("chatId"));
+    }, []);
+
 const params = useParams();
 
 
-const chatId =
-params.chatIUd;
+// const chatId =
+// params.chatIUd;
 
-console.log(params);
+// console.log(params);
 
-console.log(chatId);
+// console.log(chatId);
 
 
 
@@ -148,7 +162,7 @@ async function handleSend(){
             <Navbar />
             <div className="
             min-h-screen
-            bg-slate-50
+            bg-gradient-to-b from-emerald-50/50 via-white to-white
             p-6
             ">
 

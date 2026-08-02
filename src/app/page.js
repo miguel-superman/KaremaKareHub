@@ -6,9 +6,53 @@ import Navbar from './components/Navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ShieldCheck, FileCheck2, Wallet, Clock, HeartPulse, Stethoscope, UserCheck, Sparkles } from 'lucide-react';
+import { ShieldCheck, FileCheck2, Wallet, Clock, 
+  HeartPulse, Stethoscope, UserCheck, Sparkles, Newspaper,
+  PlayCircle,
+  ArrowRight } from 'lucide-react';
 
 const App = () => {
+
+  const latestNews = [
+    {
+      id: 1,
+      title: "How to Prepare for Your First Home Care Assignment",
+      excerpt:
+        "Practical tips to help new healthcare professionals make a great first impression.",
+      date: "July 28, 2026",
+      category: "Career Tips",
+      image:
+        "https://images.unsplash.com/photo-1584515933487-779824d29309?w=800"
+    },
+    {
+      id: 2,
+      title: "CareConnect Now Supports Appointment Tracking",
+      excerpt:
+        "Workers can now manage appointments, arrivals, and completion reports directly from their dashboard.",
+      date: "July 20, 2026",
+      category: "Platform News",
+      image:
+        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
+    }
+  ];
+
+  const latestVideos = [
+    {
+      id: 1,
+      title: "Completing Your Healthcare Worker Profile",
+      duration: "4 mins"
+    },
+    {
+      id: 2,
+      title: "Best Practices for Home Visits",
+      duration: "8 mins"
+    },
+    {
+      id: 3,
+      title: "Communicating with Clients Professionally",
+      duration: "6 mins"
+    }
+];
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-white p-2">
       <Navbar />
@@ -108,6 +152,190 @@ const App = () => {
             </Card>
           ))}
         </div>
+      </section>
+
+      {/* News & Learning */}
+
+      <section className="pb-24 mx-4">
+
+        <div className="flex items-center justify-between mb-10">
+
+          <div>
+
+            <h2 className="text-3xl font-bold">
+
+              News & Learning
+
+            </h2>
+
+            <p className="text-slate-600 mt-2">
+
+              Stay informed with healthcare news, platform updates and training videos.
+
+            </p>
+
+          </div>
+
+          <Link href="/news">
+
+            <Button variant="outline">
+
+              View All
+
+              <ArrowRight className="ml-2 h-4 w-4"/>
+
+            </Button>
+
+          </Link>
+
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+
+          {/* Latest News */}
+
+          <div className="lg:col-span-2">
+
+            <div className="space-y-6">
+
+              {latestNews.map((article)=>(
+
+                <Card
+                  key={article.id}
+                  className="overflow-hidden hover:shadow-xl transition-all duration-300"
+                >
+
+                  <div className="grid md:grid-cols-3">
+
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="h-full w-full object-cover"
+                    />
+
+                    <CardContent className="md:col-span-2 p-6">
+
+                      <Badge className="bg-emerald-100 text-emerald-700">
+
+                        <Newspaper className="h-3 w-3 mr-1"/>
+
+                        {article.category}
+
+                      </Badge>
+
+                      <h3 className="text-xl font-bold mt-4">
+
+                        {article.title}
+
+                      </h3>
+
+                      <p className="text-slate-600 mt-3">
+
+                        {article.excerpt}
+
+                      </p>
+
+                      <div className="flex justify-between items-center mt-6">
+
+                        <span className="text-sm text-slate-500">
+
+                          {article.date}
+
+                        </span>
+
+                        <Button variant="ghost">
+
+                          Read More
+
+                        </Button>
+
+                      </div>
+
+                    </CardContent>
+
+                  </div>
+
+                </Card>
+
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* Video Library */}
+
+          <Card className="border-emerald-100">
+
+            <CardContent className="p-6">
+
+              <div className="flex items-center gap-3 mb-6">
+
+                <PlayCircle className="text-emerald-600"/>
+
+                <h3 className="font-bold text-xl">
+
+                  Latest Training
+
+                </h3>
+
+              </div>
+
+              <div className="space-y-4">
+
+                {latestVideos.map(video=>(
+
+                  <button
+                    key={video.id}
+                    className="w-full text-left rounded-xl border p-4 hover:bg-emerald-50 transition"
+                  >
+
+                    <div className="flex items-center justify-between">
+
+                      <div>
+
+                        <p className="font-semibold">
+
+                          {video.title}
+
+                        </p>
+
+                        <p className="text-sm text-slate-500 mt-1">
+
+                          {video.duration}
+
+                        </p>
+
+                      </div>
+
+                      <PlayCircle className="text-emerald-600"/>
+
+                    </div>
+
+                  </button>
+
+                ))}
+
+              </div>
+
+              <Link href="/learning">
+
+                <Button
+                  className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700"
+                >
+
+                  Browse Video Library
+
+                </Button>
+
+              </Link>
+
+            </CardContent>
+
+          </Card>
+
+        </div>
+
       </section>
 
       {/* CTA */}

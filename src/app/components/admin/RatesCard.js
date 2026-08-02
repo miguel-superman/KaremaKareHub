@@ -28,28 +28,28 @@ export default function RatesCard({ worker }) {
 
                 <Rate
                     title="Hourly"
-                    value={formatMoney(rates.hourly)}
+                    value={formatMoney(rates.hourlyRate)}
                 />
 
                 <Rate
-                    title="Daily"
-                    value={formatMoney(rates.daily)}
+                    title="Home Visit"
+                    value={formatMoney(rates.homeVisitRate)}
                 />
 
                 <Rate
-                    title="Weekend"
-                    value={formatMoney(rates.weekend)}
+                    title="Overnight Rate"
+                    value={formatMoney(rates.overnightRate)}
                 />
 
                 <Rate
-                    title="Holiday"
-                    value={formatMoney(rates.holiday)}
+                    title="Travel Fee"
+                    value={formatMoney(rates.travelFee)}
                 />
 
-                <Rate
+                {/* <Rate
                     title="Emergency"
                     value={formatMoney(rates.emergency)}
-                />
+                /> */}
 
             </div>
 

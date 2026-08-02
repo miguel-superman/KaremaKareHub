@@ -53,7 +53,7 @@ import { db } from "../firebase/firebase";
 
 
 
-export async function approveWorker(workerId){
+export async function approveWorker(workerId,subscription){
 
 
     const workerRef =
@@ -79,6 +79,8 @@ export async function approveWorker(workerId){
 
             status:
                 "active",
+
+                subscription
 
         }
     );

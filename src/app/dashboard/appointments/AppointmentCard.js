@@ -12,11 +12,11 @@ export default function AppointmentCard({
 
         <Link
 
-            href={`/dashboard/appointments/${appointment.id}`}
+            href={`/dashboard/appointments/appointment?appointmentId=${appointment.id}`}
 
         >
 
-            <div className="bg-white rounded-2xl border shadow p-6 hover:shadow-lg transition">
+            <div className="bg-white rounded-2xl border shadow p-6 hover:shadow-lg transition mt-4 cursor-pointer">
 
                 <div className="flex justify-between">
 
@@ -24,7 +24,7 @@ export default function AppointmentCard({
 
                         <h2 className="font-bold text-xl">
 
-                            {appointment.workerName}
+                            {appointment.clientName || "Client"}
 
                         </h2>
 

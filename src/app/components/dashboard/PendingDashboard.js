@@ -120,9 +120,9 @@ export default function PendingDashboard({ worker }) {
 
               <LockedFeature title="Messages" />
 
-              <LockedFeature title="Earnings" />
+              {/* <LockedFeature title="Earnings" /> */}
 
-              <LockedFeature title="Reviews" />
+              {/* <LockedFeature title="Reviews" /> */}
 
             </div>
 

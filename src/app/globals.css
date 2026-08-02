@@ -128,3 +128,17 @@
     @apply font-sans;
   }
 }
+
+.input {
+
+@apply w-full
+border
+border-slate-200
+rounded-xl
+px-4
+py-3
+outline-none
+focus:ring-2
+focus:ring-emerald-500;
+
+}

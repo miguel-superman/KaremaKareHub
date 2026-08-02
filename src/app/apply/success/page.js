@@ -2,7 +2,7 @@ export default function SuccessPage() {
 
     return (
 
-        <main className="min-h-screen flex items-center justify-center bg-slate-50">
+        <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-emerald-50/50 via-white to-white">
 
             <div className="bg-white rounded-3xl shadow-lg p-10 max-w-lg text-center">
 
