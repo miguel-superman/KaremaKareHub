@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { AuthProvider } from './components/AuthProvider';
 import { Toaster } from '@/components/ui/sonner';
+import Footer from './components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           {children}
           <Toaster position="top-right" richColors />
+          <Footer />
         </AuthProvider>
       </body>
     </html>

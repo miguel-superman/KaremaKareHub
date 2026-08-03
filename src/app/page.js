@@ -10,6 +10,7 @@ import { ShieldCheck, FileCheck2, Wallet, Clock,
   HeartPulse, Stethoscope, UserCheck, Sparkles, Newspaper,
   PlayCircle,
   ArrowRight } from 'lucide-react';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -69,7 +70,7 @@ const App = () => {
               Get verified. <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Get hired.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-slate-600">
-              CareConnect helps independent healthcare workers — RNs, LPNs, CNAs, HHAs and caregivers — submit credentials, set their own daily rates, and land trusted freelance shifts.
+              Karema Kare Hub helps independent healthcare workers — RNs, LPNs, CNAs, HHAs and caregivers — submit credentials, set their own daily rates, and land trusted freelance shifts.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/apply">
@@ -349,11 +350,13 @@ const App = () => {
         </div>
       </section>
 
-      <footer className="border-t border-slate-100 py-8">
+      {/* <footer className="border-t border-slate-100 py-8">
         <div className="container text-center text-sm text-slate-500">
-          &copy; {new Date().getFullYear()} CareConnect. Built for verified freelance care.
+          &copy; {new Date().getFullYear()} Karema Kare Hub. Built for verified freelance care.
         </div>
-      </footer>
+      </footer> */}
+
+      {/* <Footer /> */}
     </div>
   );
 };

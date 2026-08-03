@@ -74,7 +74,7 @@ export default function StepIndicator({ current }) {
                             </div>
 
                             <span
-                                className={`mt-2 text-sm ${
+                                className={`mt-2 md:text-sm text-xs ${
                                     active
                                         ? "font-semibold text-emerald-600"
                                         : "text-gray-500"

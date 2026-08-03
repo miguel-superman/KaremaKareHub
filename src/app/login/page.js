@@ -222,7 +222,7 @@ const { login } = useAuth();
               <HeartPulse className="h-6 w-6" />
             </div>
             <CardTitle className="text-2xl">Welcome back</CardTitle>
-            <CardDescription>Sign in to access your Karema Kare Proffessional Account</CardDescription>
+            <CardDescription>Sign in to access your Karema Kare Professional Account</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">

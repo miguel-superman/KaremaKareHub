@@ -24,86 +24,86 @@ children
 }){
 
 
-const router = useRouter();
+    const router = useRouter();
 
 
-const {user,loading} = useAuth();
+    const {user,loading} = useAuth();
 
 
-const [checking,setChecking] =
-useState(true);
-
-
-
-useEffect(()=>{
-
-
-async function verify(){
-
-
-if(loading) return;
+    const [checking,setChecking] =
+    useState(true);
 
 
 
-if(!user){
-
-router.push("/login");
-
-return;
-
-}
+    useEffect(()=>{
 
 
+    async function verify(){
 
-const allowed =
-await checkAdmin(
-user.uid
-);
+
+    if(loading) return;
 
 
 
-if(!allowed){
+    if(!user){
 
-router.push("/dashboard");
+    router.push("/login");
 
-return;
+    return;
 
-}
-
-
-
-setChecking(false);
-
-
-}
+    }
 
 
 
-verify();
-
-
-},[user,loading]);
-
-
-
-
-if(checking){
-
-return (
-
-<div className="p-10">
-
-Checking permissions...
-
-</div>
-
-)
-
-}
+    const allowed =
+    await checkAdmin(
+    user.uid
+    );
 
 
 
-return children;
+    if(!allowed){
+
+    router.push("/dashboard");
+
+    return;
+
+    }
+
+
+
+    setChecking(false);
+
+
+    }
+
+
+
+    verify();
+
+
+    },[user,loading]);
+
+
+
+
+    if(checking){
+
+        return (
+
+            <div className="p-10">
+
+            Checking permissions...
+
+            </div>
+
+        )
+
+    }
+
+
+
+    return children;
 
 
 }
