@@ -54,6 +54,9 @@ export default function WorkerReview() {
         setId(params.get("workerId"));
     }, []);
 
+    console.log("Loading worker:", id);
+    // console.log("Params worker:", params);
+
 
 const [worker,setWorker]=useState(null);
 
