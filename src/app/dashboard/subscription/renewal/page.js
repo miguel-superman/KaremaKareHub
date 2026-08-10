@@ -84,7 +84,7 @@ export default function SubscriptionPage(){
 
     return(
 
-        <>
+        <main className="min-h-screen bg-gradient-to-b from-emerald-50 via-white to-white">
             <Navbar />
             <div className="max-w-3xl mx-auto bg-gradient-to-b from-emerald-50/50 via-white to-white p-8">
 
@@ -262,7 +262,7 @@ export default function SubscriptionPage(){
 
             </div>
         
-        </>
+        </main>
 
 
     );
