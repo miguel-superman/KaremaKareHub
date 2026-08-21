@@ -111,7 +111,7 @@ export default function ActionPanel({ worker,subscriptionExpiry }) {
 
             await updateDoc(ref,{
 
-                "verification.adminNotes":
+                "verification.rejectionReason":
                     notes,
 
             });

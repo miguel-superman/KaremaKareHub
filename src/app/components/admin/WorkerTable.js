@@ -286,8 +286,20 @@ const [loading,setLoading]=useState(true);
 
         >
 
+        {worker.personal.accountType === "business" ? (
 
-        <td className="p-4">
+                <td className="p-4">
+
+
+        {
+        worker.personal?.businessName
+        }
+
+
+        </td>
+        ) : (
+
+            <td className="p-4">
 
 
         {
@@ -302,6 +314,10 @@ const [loading,setLoading]=useState(true);
 
 
         </td>
+        )}
+    
+
+        
 
 
 
