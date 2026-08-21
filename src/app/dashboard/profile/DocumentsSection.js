@@ -142,165 +142,165 @@ label:"Employment Letter"
 
 return (
 
-<div className="
-bg-white
-rounded-3xl
-border
-p-8
-mt-8
-">
+    <div className="
+    bg-white
+    rounded-3xl
+    border
+    p-8
+    mt-8
+    ">
 
 
-<h2 className="
-text-2xl
-font-bold
-mb-6
-">
+        <h2 className="
+        text-2xl
+        font-bold
+        mb-6
+        ">
 
-Verification Documents
+        Verification Documents
 
-</h2>
+        </h2>
 
 
 
-<div className="
-space-y-5
-">
+        <div className="
+        space-y-5
+        ">
 
 
-{
-documents.map(item=>(
+        {
+        documents.map(item=>(
 
 
-<div
+        <div
 
-key={item.key}
+            key={item.key}
 
-className="
-flex
-items-center
-justify-between
-border
-rounded-xl
-p-4
-"
+            className="
+            flex
+            items-center
+            justify-between
+            border
+            rounded-xl
+            p-4
+            "
 
 
->
+        >
 
 
-<div>
+        <div>
 
 
-<p className="
-font-semibold
-">
+        <p className="
+        font-semibold
+        ">
 
-{item.label}
+        {item.label}
 
-</p>
+        </p>
 
 
-{
-worker.documents?.[item.key]
-?
-<a
+        {
+        worker.documents?.[item.key]
+        ?
+        <a
 
-href={
-worker.documents[item.key]
-}
+        href={
+        worker.documents[item.key]
+        }
 
-target="_blank"
+        target="_blank"
 
-className="
-text-sm
-text-emerald-600
-"
+        className="
+        text-sm
+        text-emerald-600
+        "
 
->
+        >
 
-View Document
+        View Document
 
-</a>
+        </a>
 
-:
+        :
 
-<p className="
-text-sm
-text-gray-500
-">
+        <p className="
+        text-sm
+        text-gray-500
+        ">
 
-Not uploaded
+        Not uploaded
 
-</p>
+        </p>
 
-}
+        }
 
 
-</div>
+        </div>
 
 
 
 
-<label
+        <label
 
-className="
-cursor-pointer
-bg-emerald-600
-text-white
-px-4
-py-2
-rounded-xl
-"
+        className="
+        cursor-pointer
+        bg-emerald-600
+        text-white
+        px-4
+        py-2
+        rounded-xl
+        "
 
 
->
+        >
 
 
-{
-uploading===item.key
-?
-"Uploading..."
-:
-"Replace"
-}
+        {
+        uploading===item.key
+        ?
+        "Uploading..."
+        :
+        "Replace"
+        }
 
 
 
-<input
+        <input
 
-hidden
+        hidden
 
-type="file"
+        type="file"
 
-onChange={
-e=>
-uploadDocument(
-item.key,
-e.target.files[0]
-)
-}
+        onChange={
+        e=>
+        uploadDocument(
+        item.key,
+        e.target.files[0]
+        )
+        }
 
-/>
+        />
 
 
-</label>
+        </label>
 
 
 
-</div>
+        </div>
 
 
-))
+        ))
 
-}
+        }
 
 
 
-</div>
+        </div>
 
 
-</div>
+    </div>
 
 
 );

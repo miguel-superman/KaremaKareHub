@@ -525,7 +525,7 @@ export default function Step5Documents({
             {/* Government ID */}
 
             <DocumentCard
-                title="Government ID"
+                title="Government Issued ID"
                 subtitle="Passport, National ID or Driver's License"
                 onUpload={(file) =>
                     handleFile("governmentId", file)

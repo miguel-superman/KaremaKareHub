@@ -98,11 +98,11 @@ export default function ApprovedDashboard({ worker }) {
 
             {/* <StatCard icon={Wallet} label="This Week" value="J$48,000" /> */}
 
-            <StatCard
+            {/* <StatCard
               icon={CalendarDays}
               label="Appointments Today"
               value={stats.appointmentsToday}
-          />
+          /> */}
 
           <StatCard
               icon={MessageSquare}
