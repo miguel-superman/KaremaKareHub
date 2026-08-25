@@ -26,223 +26,223 @@ export default function ApplicationEditModal({
 
 return (
 
-<div className="
-fixed
-inset-0
-bg-black/40
-flex
-items-center
-justify-center
-z-50
-">
+    <div className="
+        fixed
+        inset-0
+        bg-black/40
+        flex
+        items-center
+        justify-center
+        z-50
+        ">
 
 
-<div className="
-bg-white
-w-full
-max-w-5xl
-max-h-[90vh]
-overflow-y-auto
-rounded-3xl
-shadow-xl
-p-8
-">
+    <div className="
+        bg-white
+        w-full
+        max-w-5xl
+        max-h-[90vh]
+        overflow-y-auto
+        rounded-3xl
+        shadow-xl
+        p-8
+        ">
 
 
 
-<div className="
-flex
-justify-between
-items-center
-mb-8
-">
+    <div className="
+        flex
+        justify-between
+        items-center
+        mb-8
+        ">
 
 
-<h2 className="
-text-2xl
-font-bold
-">
+    <h2 className="
+        text-2xl
+        font-bold
+        ">
 
-Update Application
+    Update Application
 
-</h2>
+    </h2>
 
 
-<button
-onClick={close}
->
+    <button
+    onClick={close}
+    >
 
-<X/>
+    <X/>
 
-</button>
+    </button>
 
 
-</div>
+    </div>
 
 
 
 
 
-<div className="
-flex
-gap-3
-border-b
-pb-4
-mb-6
-">
+    <div className="
+    flex
+    gap-3
+    border-b
+    pb-4
+    mb-6
+    ">
 
 
-<button
+    <button
 
-onClick={()=>setTab("personal")}
+    onClick={()=>setTab("personal")}
 
-className={
-tab==="personal"
-?
-"text-emerald-600 font-semibold"
-:
-"text-gray-500"
-}
+    className={
+    tab==="personal"
+    ?
+    "text-emerald-600 font-semibold"
+    :
+    "text-gray-500"
+    }
 
->
+    >
 
-Personal
+    Personal
 
-</button>
+    </button>
 
 
 
 
-<button
+    <button
 
-onClick={()=>setTab("professional")}
+    onClick={()=>setTab("professional")}
 
-className={
-tab==="professional"
-?
-"text-emerald-600 font-semibold"
-:
-"text-gray-500"
-}
+    className={
+    tab==="professional"
+    ?
+    "text-emerald-600 font-semibold"
+    :
+    "text-gray-500"
+    }
 
->
+    >
 
-Professional
+    Professional
 
-</button>
+    </button>
 
 
 
 
 
-<button
+    <button
 
-onClick={()=>setTab("rates")}
+    onClick={()=>setTab("rates")}
 
-className={
-tab==="rates"
-?
-"text-emerald-600 font-semibold"
-:
-"text-gray-500"
-}
+    className={
+    tab==="rates"
+    ?
+    "text-emerald-600 font-semibold"
+    :
+    "text-gray-500"
+    }
 
->
+    >
 
-Rates
+    Rates
 
-</button>
+    </button>
 
 
 
 
 
-<button
+    <button
 
-onClick={()=>setTab("documents")}
+    onClick={()=>setTab("documents")}
 
-className={
-tab==="documents"
-?
-"text-emerald-600 font-semibold"
-:
-"text-gray-500"
-}
+    className={
+    tab==="documents"
+    ?
+    "text-emerald-600 font-semibold"
+    :
+    "text-gray-500"
+    }
 
->
+    >
 
-Documents
+    Documents
 
-</button>
+    </button>
 
 
 
-</div>
+    </div>
 
 
 
 
 
-{
-tab==="personal" && (
+    {
+    tab==="personal" && (
 
-<Step2PersonalUpdate
-worker={worker}
-/>
+    <Step2PersonalUpdate
+    worker={worker}
+    />
 
-)
-}
+    )
+    }
 
 
 
 
 
-{
-tab==="professional" && (
+    {
+    tab==="professional" && (
 
-<Step3Professional
-worker={worker}
-/>
+    <Step3Professional
+    worker={worker}
+    />
 
-)
-}
+    )
+    }
 
 
 
 
 
-{
-tab==="rates" && (
+    {
+    tab==="rates" && (
 
-<Step4Rates
-worker={worker}
-/>
+    <Step4Rates
+    worker={worker}
+    />
 
-)
-}
+    )
+    }
 
 
 
 
 
-{
-tab==="documents" && (
+    {
+    tab==="documents" && (
 
-<Step5Documents
-worker={worker}
-/>
+    <Step5Documents
+    worker={worker}
+    />
 
-)
-}
+    )
+    }
 
 
 
 
 
-</div>
+    </div>
 
 
-</div>
+    </div>
 
 
 );

@@ -7,11 +7,14 @@ export default function ProgressHeader({ step }) {
 
       <div className="flex justify-center">
 
-        <div className="bg-emerald-500 rounded-2xl p-4 text-white shadow">
+        {/* <div className="bg-emerald-500 rounded-2xl p-4 text-white shadow">
 
           <HeartPulse size={30} />
 
-        </div>
+        </div> */}
+
+        <img src="/favicon.ico" alt="Karema Logo" className="mx-4 h-20 w-20" />
+         
 
       </div>
 

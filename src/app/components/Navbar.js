@@ -19,9 +19,10 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 w-full border-b border-emerald-100 bg-white/80 backdrop-blur px-4">
       <div className=" flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
-            <HeartPulse className="h-5 w-5" />
-          </div>
+          {/* <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
+            
+          </div> */}
+          <img src="/favicon.ico" className="h-10 w-10" />
           <span className="text-lg font-bold tracking-tight text-slate-900">Karema Kare Hub</span>
         </Link>
 
