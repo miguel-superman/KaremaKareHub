@@ -236,6 +236,10 @@ export default function Step3Professional({
                 </option>
 
                 <option>
+                Domestic Care
+                </option>
+
+                <option>
                 Pediatrician
                 </option>
 
@@ -441,7 +445,7 @@ export default function Step3Professional({
 
                             <li>• Physical Therapist</li>
 
-                            <li>• Dietician / Dietitian</li>
+                            <li>• Dietician</li>
 
                             <li>• Other regulated healthcare professionals</li>
 

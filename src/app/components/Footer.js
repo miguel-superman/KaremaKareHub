@@ -141,12 +141,12 @@ export default function Footer(){
                 <div className="space-y-3 text-sm">
 
                     <p>
-                        📧 support@karemakarehub.com
+                        📧 karemababysitters@gmail.com
                     </p>
 
-                    <p>
-                        📞 +1 (876) XXX-XXXX
-                    </p>
+                    {/* <p>
+                        📞 +1 (876) 
+                    </p> */}
 
                     <p>
                         Kingston, Jamaica

@@ -150,13 +150,13 @@ export default function TermsPage() {
 
                             <ul className="mt-4 space-y-2 text-gray-700">
 
-                                <li>• Individual Monthly: <strong>J$1,000</strong></li>
+                                <li>• Individual Monthly: <strong>USD$9.99</strong></li>
 
-                                <li>• Individual Quarterly: <strong>J$2,500</strong></li>
+                                <li>• Individual Quarterly: <strong>USD$19.99</strong></li>
 
-                                <li>• Business Monthly: <strong>J$5,000</strong></li>
+                                <li>• Business Monthly: <strong>USD$19.99</strong></li>
 
-                                <li>• Business Quarterly: <strong>J$5,750</strong></li>
+                                <li>• Business Quarterly: <strong>USD$24.99</strong></li>
 
                             </ul>
 
