@@ -70,7 +70,7 @@ const App = () => {
               Get verified. <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Get hired.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-slate-600">
-              Karema Kare Hub helps independent healthcare workers — RNs, LPNs, CNAs, HHAs and caregivers — submit credentials, set their own daily rates, and land trusted freelance shifts.
+              Karema Kare Hub helps independent healthcare workers  - submit credentials, set their own daily rates, and land trusted freelance shifts.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/apply">
@@ -84,7 +84,7 @@ const App = () => {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-slate-500">
-              <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" /> HIPAA-aware storage</div>
+              {/* <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" /> HIPAA-aware storage</div> */}
               <div className="flex items-center gap-2"><FileCheck2 className="h-4 w-4 text-emerald-600" /> Credential verification</div>
               <div className="flex items-center gap-2"><Wallet className="h-4 w-4 text-emerald-600" /> Set your own rates</div>
             </div>

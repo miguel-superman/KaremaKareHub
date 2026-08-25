@@ -220,7 +220,7 @@ export default function Step3Professional({
                 </option>
 
                 <option>
-                Baby Sitters
+                Baby Sitter
                 </option>
 
                 <option>
@@ -726,7 +726,19 @@ export default function Step3Professional({
 
         "Home Care",
 
-        "Post Surgery"
+        "Post Surgery",
+
+        "Domestic/Cleaning",
+
+        "Companion Care",
+
+        "Errands & Transportation",
+
+        "Specialized Child Care Services",
+
+        "Age in Place Support",
+
+        "Nanny Services",
 
         ]
 

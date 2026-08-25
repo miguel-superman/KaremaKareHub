@@ -1,10 +1,472 @@
+// "use client";
+
+// import {useState} from "react";
+// import {
+// validateRates
+// }
+// from "../lib/firebase/validation";
+
+
+// export default function Step4Rates({
+//     next,
+//     previous,
+//     save,
+//     data
+// }) {
+
+
+//     const [error,setError]=useState("");
+
+
+
+
+// const [form,setForm] = useState({
+
+//     hourlyRate:"",
+//     homeVisitRate:"",
+//     overnightRate:"",
+//     travelFee:"",
+//     availability:"",
+//     paymentMethod:"",
+
+//     ...data
+
+// });
+
+
+
+// function updateField(e){
+
+// setForm({
+
+// ...form,
+
+// [e.target.name]:e.target.value
+
+// });
+
+// }
+
+
+
+
+//     function continueNext(){
+
+
+//         const validation =
+//         validateRates(form);
+
+
+
+//         if(validation){
+
+//         setError(validation);
+
+//         return;
+
+//         }
+
+
+
+//         save(form);
+
+//         next();
+
+
+// }
+
+
+
+
+
+// return (
+
+// <div className="bg-white mt-10 rounded-2xl shadow-lg border p-8">
+
+
+// <h2 className="text-2xl font-bold">
+
+// Service Rates
+
+// </h2>
+
+
+// <p className="text-gray-500 mt-1">
+
+// Set your healthcare service pricing.
+
+// </p>
+
+
+
+
+// <div className="grid md:grid-cols-2 gap-6 mt-8">
+
+
+
+// <div>
+
+// <label className="font-medium">
+
+// Hourly Rate ($)
+
+// </label>
+
+
+// <input
+
+// type="number"
+
+// name="hourlyRate"
+
+// value={form.hourlyRate}
+
+// onChange={updateField}
+
+// placeholder="Example: 35"
+
+// className="w-full mt-2 border rounded-lg h-12 px-4"
+
+// />
+
+// </div>
+
+
+
+
+
+// <div>
+
+// <label className="font-medium">
+
+// Home Visit Rate ($)
+
+// </label>
+
+
+// <input
+
+// type="number"
+
+// name="homeVisitRate"
+
+// value={form.homeVisitRate}
+
+// onChange={updateField}
+
+// placeholder="Example: 75"
+
+// className="w-full mt-2 border rounded-lg h-12 px-4"
+
+// />
+
+// </div>
+
+
+
+
+
+
+
+// <div>
+
+// <label className="font-medium">
+
+// Overnight Care Rate ($)
+
+// </label>
+
+
+// <input
+
+// type="number"
+
+// name="overnightRate"
+
+// value={form.overnightRate}
+
+// onChange={updateField}
+
+// placeholder="Example: 250"
+
+// className="w-full mt-2 border rounded-lg h-12 px-4"
+
+// />
+
+// </div>
+
+
+
+
+
+
+
+// <div>
+
+// <label className="font-medium">
+
+// Travel Fee ($)
+
+// </label>
+
+
+// <input
+
+// type="number"
+
+// name="travelFee"
+
+// value={form.travelFee}
+
+// onChange={updateField}
+
+// placeholder="Optional"
+
+// className="w-full mt-2 border rounded-lg h-12 px-4"
+
+// />
+
+// </div>
+
+
+// </div>
+
+
+
+
+
+
+
+// <div className="mt-8">
+
+
+// <label className="font-medium">
+
+// Availability
+
+// </label>
+
+
+// <select
+
+// name="availability"
+
+// value={form.availability}
+
+// onChange={updateField}
+
+// className="w-full mt-2 border rounded-lg h-12 px-4"
+
+// >
+
+
+// <option value="">
+
+// Select Availability
+
+// </option>
+
+
+// <option>
+
+// Weekdays
+
+// </option>
+
+
+// <option>
+
+// Weekends
+
+// </option>
+
+
+// <option>
+
+// Evenings
+
+// </option>
+
+
+// <option>
+
+// Full Time
+
+// </option>
+
+
+// <option>
+
+// Flexible
+
+// </option>
+
+
+// </select>
+
+
+// </div>
+
+
+
+
+
+
+
+// <div className="mt-8">
+
+
+// <label className="font-medium">
+
+// Preferred Payment Method
+
+// </label>
+
+
+// <select
+
+// name="paymentMethod"
+
+// value={form.paymentMethod}
+
+// onChange={updateField}
+
+// className="w-full mt-2 border rounded-lg h-12 px-4"
+
+// >
+
+
+// <option value="">
+
+// Select Method
+
+// </option>
+
+
+// <option>
+
+// Bank Transfer
+
+// </option>
+
+
+// <option>
+
+// Mobile Money
+
+// </option>
+
+
+// <option>
+
+// Cash
+
+// </option>
+
+
+// <option>
+
+// Platform Payments
+
+// </option>
+
+
+// </select>
+
+
+// </div>
+
+
+
+
+
+
+
+// <div className="mt-10 bg-emerald-50 border border-emerald-100 rounded-lg p-5">
+
+
+// <h3 className="font-semibold">
+
+// Pricing Tips
+
+// </h3>
+
+
+// <p className="text-sm text-gray-600 mt-2">
+
+// You can update your rates anytime from your healthcare worker dashboard.
+
+// </p>
+
+
+// </div>
+
+
+
+//         {
+//             error && (
+
+//             <div className="mt-5 bg-red-50 border border-red-200 text-red-600 p-4 rounded-lg">
+
+//             {error}
+
+//             </div>
+
+//          )
+//         }
+
+
+//         <div className="flex justify-between mt-10">
+
+
+//         <button
+
+//         onClick={previous}
+
+//         className="px-6 py-3 border rounded-lg"
+
+//         >
+
+//         ← Back
+
+//         </button>
+
+
+
+
+
+//         <button
+
+//         onClick={continueNext}
+
+//         className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg"
+
+//         >
+
+//         Continue →
+
+//         </button>
+
+
+//         </div>
+
+
+
+
+
+//     </div>
+
+// );
+
+// }
+
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
+
 import {
-validateRates
-}
-from "../lib/firebase/validation";
+    validateRates
+} from "../lib/firebase/validation";
 
 
 export default function Step4Rates({
@@ -14,448 +476,745 @@ export default function Step4Rates({
     data
 }) {
 
-
-    const [error,setError]=useState("");
-
+    const [error, setError] = useState("");
 
 
+    const [form, setForm] = useState({
 
-const [form,setForm] = useState({
+        currency: "JMD",
 
-    hourlyRate:"",
-    homeVisitRate:"",
-    overnightRate:"",
-    travelFee:"",
-    availability:"",
-    paymentMethod:"",
+        hourlyRate: "",
+        homeVisitRate: "",
+        overnightRate: "",
+        travelFee: "",
 
-    ...data
+        availability: "",
+        paymentMethod: "",
 
-});
+        ...data
 
-
-
-function updateField(e){
-
-setForm({
-
-...form,
-
-[e.target.name]:e.target.value
-
-});
-
-}
+    });
 
 
+    function updateField(e) {
+
+        setForm({
+
+            ...form,
+
+            [e.target.name]: e.target.value
+
+        });
+
+    }
 
 
-    function continueNext(){
+    function continueNext() {
+
+        /*
+         * Build the rates with the selected currency.
+         *
+         * Example:
+         *
+         * JMD$1500
+         * USD$35
+         */
+
+        const formattedForm = {
+
+            ...form,
+
+            hourlyRate:
+                form.hourlyRate
+                    ? `${form.currency}$${form.hourlyRate}`
+                    : "",
+
+            homeVisitRate:
+                form.homeVisitRate
+                    ? `${form.currency}$${form.homeVisitRate}`
+                    : "",
+
+            overnightRate:
+                form.overnightRate
+                    ? `${form.currency}$${form.overnightRate}`
+                    : "",
+
+            travelFee:
+                form.travelFee
+                    ? `${form.currency}$${form.travelFee}`
+                    : ""
+
+        };
 
 
         const validation =
-        validateRates(form);
+            validateRates(formattedForm);
 
 
+        if (validation) {
 
-        if(validation){
+            setError(validation);
 
-        setError(validation);
-
-        return;
+            return;
 
         }
 
 
-
-        save(form);
+        save(formattedForm);
 
         next();
 
+    }
 
-}
 
+    return (
 
+        <div className="
+            bg-white
+            mt-10
+            rounded-2xl
+            shadow-lg
+            border
+            p-8
+        ">
 
 
+            <h2 className="text-2xl font-bold">
 
-return (
+                Service Rates
 
-<div className="bg-white mt-10 rounded-2xl shadow-lg border p-8">
+            </h2>
 
 
-<h2 className="text-2xl font-bold">
+            <p className="text-gray-500 mt-1">
 
-Service Rates
+                Set your healthcare service pricing and preferred currency.
 
-</h2>
+            </p>
 
 
-<p className="text-gray-500 mt-1">
+            {/* Currency */}
 
-Set your healthcare service pricing.
+            <div className="mt-8">
 
-</p>
+                <label className="font-medium">
 
+                    Rate Currency
 
+                </label>
 
 
-<div className="grid md:grid-cols-2 gap-6 mt-8">
+                <select
 
+                    name="currency"
 
+                    value={form.currency}
 
-<div>
+                    onChange={updateField}
 
-<label className="font-medium">
+                    className="
+                        w-full
+                        mt-2
+                        border
+                        rounded-lg
+                        h-12
+                        px-4
+                        bg-white
+                    "
 
-Hourly Rate ($)
+                >
 
-</label>
+                    <option value="JMD">
 
+                        JMD - Jamaican Dollar
 
-<input
+                    </option>
 
-type="number"
 
-name="hourlyRate"
+                    <option value="USD">
 
-value={form.hourlyRate}
+                        USD - US Dollar
 
-onChange={updateField}
+                    </option>
 
-placeholder="Example: 35"
 
-className="w-full mt-2 border rounded-lg h-12 px-4"
+                    <option value="CAD">
 
-/>
+                        CAD - Canadian Dollar
 
-</div>
+                    </option>
 
 
+                    <option value="GBP">
 
+                        GBP - British Pound
 
+                    </option>
 
-<div>
 
-<label className="font-medium">
+                    <option value="EUR">
 
-Home Visit Rate ($)
+                        EUR - Euro
 
-</label>
+                    </option>
 
+                </select>
 
-<input
 
-type="number"
+                <p className="
+                    text-xs
+                    text-gray-500
+                    mt-2
+                ">
 
-name="homeVisitRate"
+                    This currency will be used for all of your service rates.
 
-value={form.homeVisitRate}
-
-onChange={updateField}
-
-placeholder="Example: 75"
-
-className="w-full mt-2 border rounded-lg h-12 px-4"
-
-/>
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-<label className="font-medium">
-
-Overnight Care Rate ($)
-
-</label>
-
-
-<input
-
-type="number"
-
-name="overnightRate"
-
-value={form.overnightRate}
-
-onChange={updateField}
-
-placeholder="Example: 250"
-
-className="w-full mt-2 border rounded-lg h-12 px-4"
-
-/>
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-<label className="font-medium">
-
-Travel Fee ($)
-
-</label>
-
-
-<input
-
-type="number"
-
-name="travelFee"
-
-value={form.travelFee}
-
-onChange={updateField}
-
-placeholder="Optional"
-
-className="w-full mt-2 border rounded-lg h-12 px-4"
-
-/>
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div className="mt-8">
-
-
-<label className="font-medium">
-
-Availability
-
-</label>
-
-
-<select
-
-name="availability"
-
-value={form.availability}
-
-onChange={updateField}
-
-className="w-full mt-2 border rounded-lg h-12 px-4"
-
->
-
-
-<option value="">
-
-Select Availability
-
-</option>
-
-
-<option>
-
-Weekdays
-
-</option>
-
-
-<option>
-
-Weekends
-
-</option>
-
-
-<option>
-
-Evenings
-
-</option>
-
-
-<option>
-
-Full Time
-
-</option>
-
-
-<option>
-
-Flexible
-
-</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-
-
-<div className="mt-8">
-
-
-<label className="font-medium">
-
-Preferred Payment Method
-
-</label>
-
-
-<select
-
-name="paymentMethod"
-
-value={form.paymentMethod}
-
-onChange={updateField}
-
-className="w-full mt-2 border rounded-lg h-12 px-4"
-
->
-
-
-<option value="">
-
-Select Method
-
-</option>
-
-
-<option>
-
-Bank Transfer
-
-</option>
-
-
-<option>
-
-Mobile Money
-
-</option>
-
-
-<option>
-
-Cash
-
-</option>
-
-
-<option>
-
-Platform Payments
-
-</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-
-
-<div className="mt-10 bg-emerald-50 border border-emerald-100 rounded-lg p-5">
-
-
-<h3 className="font-semibold">
-
-Pricing Tips
-
-</h3>
-
-
-<p className="text-sm text-gray-600 mt-2">
-
-You can update your rates anytime from your healthcare worker dashboard.
-
-</p>
-
-
-</div>
-
-
-
-        {
-            error && (
-
-            <div className="mt-5 bg-red-50 border border-red-200 text-red-600 p-4 rounded-lg">
-
-            {error}
+                </p>
 
             </div>
 
-         )
-        }
+
+            {/* Rates */}
+
+            <div className="
+                grid
+                md:grid-cols-2
+                gap-6
+                mt-8
+            ">
 
 
-        <div className="flex justify-between mt-10">
+                {/* Hourly */}
+
+                <div>
+
+                    <label className="font-medium">
+
+                        Hourly Rate
+
+                    </label>
 
 
-        <button
+                    <div className="relative mt-2">
 
-        onClick={previous}
+                        <span className="
+                            absolute
+                            left-4
+                            top-1/2
+                            -translate-y-1/2
+                            text-gray-500
+                            font-medium
+                        ">
 
-        className="px-6 py-3 border rounded-lg"
+                            {form.currency}$
 
-        >
-
-        ← Back
-
-        </button>
+                        </span>
 
 
+                        <input
+
+                            type="number"
+
+                            name="hourlyRate"
+
+                            value={form.hourlyRate}
+
+                            onChange={updateField}
+
+                            placeholder="Example: 1500"
+
+                            className="
+                                w-full
+                                border
+                                rounded-lg
+                                h-12
+                                pl-16
+                                pr-4
+                            "
+
+                        />
+
+                    </div>
+
+                </div>
 
 
+                {/* Home Visit */}
 
-        <button
+                <div>
 
-        onClick={continueNext}
+                    <label className="font-medium">
 
-        className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg"
+                        Home Visit Rate
 
-        >
+                    </label>
 
-        Continue →
 
-        </button>
+                    <div className="relative mt-2">
+
+                        <span className="
+                            absolute
+                            left-4
+                            top-1/2
+                            -translate-y-1/2
+                            text-gray-500
+                            font-medium
+                        ">
+
+                            {form.currency}$
+
+                        </span>
+
+
+                        <input
+
+                            type="number"
+
+                            name="homeVisitRate"
+
+                            value={form.homeVisitRate}
+
+                            onChange={updateField}
+
+                            placeholder="Example: 5000"
+
+                            className="
+                                w-full
+                                border
+                                rounded-lg
+                                h-12
+                                pl-16
+                                pr-4
+                            "
+
+                        />
+
+                    </div>
+
+                </div>
+
+
+                {/* Overnight */}
+
+                <div>
+
+                    <label className="font-medium">
+
+                        Overnight Care Rate
+
+                    </label>
+
+
+                    <div className="relative mt-2">
+
+                        <span className="
+                            absolute
+                            left-4
+                            top-1/2
+                            -translate-y-1/2
+                            text-gray-500
+                            font-medium
+                        ">
+
+                            {form.currency}$
+
+                        </span>
+
+
+                        <input
+
+                            type="number"
+
+                            name="overnightRate"
+
+                            value={form.overnightRate}
+
+                            onChange={updateField}
+
+                            placeholder="Example: 15000"
+
+                            className="
+                                w-full
+                                border
+                                rounded-lg
+                                h-12
+                                pl-16
+                                pr-4
+                            "
+
+                        />
+
+                    </div>
+
+                </div>
+
+
+                {/* Travel */}
+
+                <div>
+
+                    <label className="font-medium">
+
+                        Travel Fee
+
+                    </label>
+
+
+                    <div className="relative mt-2">
+
+                        <span className="
+                            absolute
+                            left-4
+                            top-1/2
+                            -translate-y-1/2
+                            text-gray-500
+                            font-medium
+                        ">
+
+                            {form.currency}$
+
+                        </span>
+
+
+                        <input
+
+                            type="number"
+
+                            name="travelFee"
+
+                            value={form.travelFee}
+
+                            onChange={updateField}
+
+                            placeholder="Optional"
+
+                            className="
+                                w-full
+                                border
+                                rounded-lg
+                                h-12
+                                pl-16
+                                pr-4
+                            "
+
+                        />
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            {/* Availability */}
+
+            <div className="mt-8">
+
+                <label className="font-medium">
+
+                    Availability
+
+                </label>
+
+
+                <select
+
+                    name="availability"
+
+                    value={form.availability}
+
+                    onChange={updateField}
+
+                    className="
+                        w-full
+                        mt-2
+                        border
+                        rounded-lg
+                        h-12
+                        px-4
+                    "
+
+                >
+
+                    <option value="">
+
+                        Select Availability
+
+                    </option>
+
+                    <option>
+
+                        Weekdays
+
+                    </option>
+
+                    <option>
+
+                        Weekends
+
+                    </option>
+
+                    <option>
+
+                        Evenings
+
+                    </option>
+
+                    <option>
+
+                        Full Time
+
+                    </option>
+
+                    <option>
+
+                        Flexible
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            {/* Payment Method */}
+
+            <div className="mt-8">
+
+                <label className="font-medium">
+
+                    Preferred Payment Method
+
+                </label>
+
+
+                <select
+
+                    name="paymentMethod"
+
+                    value={form.paymentMethod}
+
+                    onChange={updateField}
+
+                    className="
+                        w-full
+                        mt-2
+                        border
+                        rounded-lg
+                        h-12
+                        px-4
+                    "
+
+                >
+
+                    <option value="">
+
+                        Select Method
+
+                    </option>
+
+                    <option>
+
+                        Bank Transfer
+
+                    </option>
+
+                    <option>
+
+                        Mobile Money
+
+                    </option>
+
+                    <option>
+
+                        Cash
+
+                    </option>
+
+                    <option>
+
+                        Platform Payments
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            {/* Pricing Tips */}
+
+            <div className="
+                mt-10
+                bg-emerald-50
+                border
+                border-emerald-100
+                rounded-lg
+                p-5
+            ">
+
+                <h3 className="font-semibold">
+
+                    Pricing Tips
+
+                </h3>
+
+
+                <p className="text-sm text-gray-600 mt-2">
+
+                    Your rates will be displayed using the currency you
+                    selected. You can update your rates anytime from
+                    your healthcare worker dashboard.
+
+                </p>
+
+
+                {/* Preview */}
+
+                <div className="mt-4">
+
+                    <p className="
+                        text-xs
+                        uppercase
+                        tracking-wide
+                        text-gray-500
+                    ">
+
+                        Rate Preview
+
+                    </p>
+
+
+                    <div className="
+                        grid
+                        grid-cols-2
+                        gap-3
+                        mt-2
+                        text-sm
+                    ">
+
+                        <div className="bg-white rounded-lg p-3">
+
+                            <span className="text-gray-500">
+
+                                Hourly
+
+                            </span>
+
+                            <p className="font-semibold">
+
+                                {form.hourlyRate
+                                    ? `${form.currency}$${form.hourlyRate}`
+                                    : "Not set"
+                                }
+
+                            </p>
+
+                        </div>
+
+
+                        <div className="bg-white rounded-lg p-3">
+
+                            <span className="text-gray-500">
+
+                                Home Visit
+
+                            </span>
+
+                            <p className="font-semibold">
+
+                                {form.homeVisitRate
+                                    ? `${form.currency}$${form.homeVisitRate}`
+                                    : "Not set"
+                                }
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {/* Error */}
+
+            {
+                error && (
+
+                    <div className="
+                        mt-5
+                        bg-red-50
+                        border
+                        border-red-200
+                        text-red-600
+                        p-4
+                        rounded-lg
+                    ">
+
+                        {error}
+
+                    </div>
+
+                )
+            }
+
+
+            {/* Navigation */}
+
+            <div className="
+                flex
+                justify-between
+                mt-10
+            ">
+
+
+                <button
+
+                    onClick={previous}
+
+                    className="
+                        px-6
+                        py-3
+                        border
+                        rounded-lg
+                    "
+
+                >
+
+                    ← Back
+
+                </button>
+
+
+                <button
+
+                    onClick={continueNext}
+
+                    className="
+                        bg-emerald-500
+                        hover:bg-emerald-600
+                        text-white
+                        px-8
+                        py-3
+                        rounded-lg
+                    "
+
+                >
+
+                    Continue →
+
+                </button>
+
+
+            </div>
 
 
         </div>
 
-
-
-
-
-    </div>
-
-);
+    );
 
 }
