@@ -343,7 +343,6 @@ return ( <div className="border-b border-slate-100 last:border-0"> <button
    > <span className="font-semibold text-slate-800">
 {item.question} </span>
 
-```
     <span
       className={`shrink-0 rounded-full p-2 bg-slate-100 transition-transform ${
         open ? "rotate-180" : ""
@@ -397,7 +396,6 @@ const totalQuestions = categories.reduce(
 
 return ( <main className="min-h-screen bg-gradient-to-b from-emerald-50/60 via-white to-white"> <Navbar />
 
-```
   {/* Hero */}
   <section className="relative overflow-hidden">
     <div className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-emerald-200/40 blur-3xl" />

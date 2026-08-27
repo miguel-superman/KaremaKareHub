@@ -58,14 +58,14 @@ export default function ContactPage() {
 
       {/* Contact Cards */}
       <section className="max-w-6xl mx-auto px-6 pb-14">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
 
           <ContactCard
             icon={Mail}
             title="Email Us"
             description="Send us a message and our support team will get back to you."
-            value="support@karemakarehub.com"
-            href="mailto:support@karemakarehub.com"
+            value="karemababysitters@gmail.com"
+            href="mailto:karemababysitters@gmail.com"
           />
 
           <ContactCard
@@ -76,13 +76,13 @@ export default function ContactPage() {
             href="tel:+18760000000"
           />
 
-          <ContactCard
+          {/* <ContactCard
             icon={MessageCircle}
             title="Live Chat"
             description="Need a quick answer? Chat with our support team online."
             value="Chat with us"
             href="#"
-          />
+          /> */}
 
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function ContactPage() {
                 <InfoRow
                   icon={Mail}
                   title="Email"
-                  text="support@karemakarehub.com"
+                  text="karemababysitters@gmail.com"
                 />
 
               </div>
