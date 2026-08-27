@@ -4,11 +4,11 @@ import Link from 'next/link';
 import Navbar from './components/Navbar';
 // import FirebaseNotice from './components/FirebaseNotice';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent,  } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ShieldCheck, FileCheck2, Wallet, Clock, 
   HeartPulse, Stethoscope, UserCheck, Sparkles, Newspaper,
-  PlayCircle,
+  PlayCircle, Users,
   ArrowRight } from 'lucide-react';
 import Footer from './components/Footer';
 
@@ -67,7 +67,7 @@ const App = () => {
               <Sparkles className="mr-1 h-3 w-3" /> Verified freelance care, on demand
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              Get verified. <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Get hired.</span>
+              Karema Professional  <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Ecosystem.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-slate-600">
               Karema Kare Hub helps independent healthcare workers  - submit credentials, set their own daily rates, and land trusted freelance shifts.
@@ -124,6 +124,234 @@ const App = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Karema Ecosystem */}
+      <section className="py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-14">
+
+            <Badge className="mb-4 bg-emerald-100 text-emerald-800 hover:bg-emerald-100 border-0">
+              <Sparkles className="mr-1 h-3 w-3" />
+              The Karema Ecosystem
+            </Badge>
+
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+              More than care.
+              <span className="block bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                A community built around people.
+              </span>
+            </h2>
+
+            <p className="mt-4 text-lg text-slate-600">
+              Karema brings professionals, families and organizations together
+              through trusted connections, meaningful opportunities and services
+              designed to make life easier.
+            </p>
+
+          </div>
+
+
+          {/* Main Audience Cards */}
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {/* Professionals */}
+            <Card className="group relative overflow-hidden border-emerald-100 hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-300">
+
+              <CardContent className="p-8">
+
+                <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center mb-6">
+
+                  <UserCheck className="h-7 w-7 text-emerald-600" />
+
+                </div>
+
+                <Badge className="bg-emerald-50 text-emerald-700 hover:bg-emerald-50 border-0 mb-4">
+                  For Professionals
+                </Badge>
+
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Earn. Network. Grow.
+                </h3>
+
+                <p className="mt-3 text-slate-600 leading-relaxed">
+                  Earn more from the skills you already have while connecting
+                  with clients, businesses and opportunities that help you
+                  grow professionally.
+                </p>
+
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-emerald-600">
+                  Build your professional future
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+
+              </CardContent>
+
+            </Card>
+
+
+            {/* Families */}
+            <Card className="group relative overflow-hidden border-teal-100 hover:shadow-xl hover:shadow-teal-100/50 transition-all duration-300">
+
+              <CardContent className="p-8">
+
+                <div className="w-14 h-14 rounded-2xl bg-teal-100 flex items-center justify-center mb-6">
+
+                  <HeartPulse className="h-7 w-7 text-teal-600" />
+
+                </div>
+
+                <Badge className="bg-teal-50 text-teal-700 hover:bg-teal-50 border-0 mb-4">
+                  For Families
+                </Badge>
+
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Trusted care.
+                </h3>
+
+                <p className="mt-3 text-slate-600 leading-relaxed">
+                  Find trusted people for the people who matter most,
+                  connecting your family with professionals who can provide
+                  the care and support you need.
+                </p>
+
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-teal-600">
+                  Find trusted care
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+
+              </CardContent>
+
+            </Card>
+
+
+            {/* Businesses */}
+            <Card className="group relative overflow-hidden border-cyan-100 hover:shadow-xl hover:shadow-cyan-100/50 transition-all duration-300">
+
+              <CardContent className="p-8">
+
+                <div className="w-14 h-14 rounded-2xl bg-cyan-100 flex items-center justify-center mb-6">
+
+                  <Users className="h-7 w-7 text-cyan-600" />
+
+                </div>
+
+                <Badge className="bg-cyan-50 text-cyan-700 hover:bg-cyan-50 border-0 mb-4">
+                  For Businesses
+                </Badge>
+
+                <h3 className="text-2xl font-bold text-slate-900">
+                  People when you need them.
+                </h3>
+
+                <p className="mt-3 text-slate-600 leading-relaxed">
+                  Find the people you need, when you need them. Connect with
+                  vetted professionals and access services that support your
+                  organization's needs.
+                </p>
+
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-cyan-600">
+                  Find trusted talent
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+
+              </CardContent>
+
+            </Card>
+
+          </div>
+
+
+          {/* Core Values */}
+          <div className="mt-12 rounded-3xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 sm:p-10 text-white text-center shadow-xl shadow-emerald-600/20">
+
+            <p className="text-lg sm:text-xl font-semibold tracking-wide">
+              Trust.
+              <span className="mx-3 text-emerald-200">•</span>
+              Opportunity.
+              <span className="mx-3 text-emerald-200">•</span>
+              Convenience.
+              <span className="mx-3 text-emerald-200">•</span>
+              Belonging.
+            </p>
+
+            <p className="mt-3 text-emerald-100 text-sm sm:text-base">
+              Everything we build starts with people.
+            </p>
+
+          </div>
+
+
+          {/* Karema Products */}
+          <div className="mt-20">
+
+            <div className="text-center mb-10">
+
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                One platform. Many possibilities.
+              </h3>
+
+              <p className="mt-2 text-slate-600">
+                The Karema ecosystem is growing.
+              </p>
+
+            </div>
+
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+              {/* Karema Professionals */}
+              <EcosystemCard
+                title="Karema Professionals"
+                description="Where professionals earn, network and grow."
+                icon={UserCheck}
+                active
+              />
+
+              {/* Karema Care */}
+              <EcosystemCard
+                title="Karema Care"
+                description="Where families find trusted care."
+                icon={HeartPulse}
+                active
+              />
+
+              {/* Karema Business */}
+              <EcosystemCard
+                title="Karema Business"
+                description="Where organizations find vetted talent and services."
+                icon={Users}
+                active
+              />
+
+              {/* Learning */}
+              <EcosystemCard
+                title="Karema Learning"
+                description="CPD, tutoring, certifications and workshops."
+                icon={FileCheck2}
+              />
+
+              {/* Marketplace */}
+              <EcosystemCard
+                title="Karema Marketplace"
+                description="Professional and lifestyle services."
+                icon={Wallet}
+              />
+
+              {/* Opportunities */}
+              <EcosystemCard
+                title="Karema Opportunities"
+                description="Jobs, contracts, gigs and side hustles."
+                icon={Sparkles}
+              />
+
+            </div>
+
+          </div>
+
         </div>
       </section>
 
@@ -360,6 +588,102 @@ const App = () => {
     </div>
   );
 };
+
+function EcosystemCard({
+  title,
+  description,
+  icon: Icon,
+  active = false
+}) {
+
+  return (
+
+    <Card
+      className={`
+        relative overflow-hidden
+        rounded-2xl
+        border
+        transition-all
+        duration-300
+        ${
+          active
+            ? "border-emerald-200 hover:border-emerald-400 hover:shadow-lg"
+            : "border-slate-200 bg-slate-50/70"
+        }
+      `}
+    >
+
+      <CardContent className="p-6">
+
+        <div className="flex items-start justify-between">
+
+          <div
+            className={`
+              w-11
+              h-11
+              rounded-xl
+              flex
+              items-center
+              justify-center
+              ${
+                active
+                  ? "bg-emerald-100"
+                  : "bg-slate-200"
+              }
+            `}
+          >
+
+            <Icon
+              className={
+                active
+                  ? "text-emerald-600"
+                  : "text-slate-500"
+              }
+              size={21}
+            />
+
+          </div>
+
+
+          {!active && (
+
+            <Badge
+              variant="outline"
+              className="text-xs"
+            >
+              Coming Soon
+            </Badge>
+
+          )}
+
+        </div>
+
+
+        <h4 className="mt-5 text-lg font-bold text-slate-900">
+          {title}
+        </h4>
+
+
+        <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+          {description}
+        </p>
+
+
+        {active && (
+
+          <div className="mt-4 text-xs font-semibold text-emerald-600">
+            Available now
+          </div>
+
+        )}
+
+      </CardContent>
+
+    </Card>
+
+  );
+
+}
 
 
 export default App;

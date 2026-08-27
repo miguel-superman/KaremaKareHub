@@ -56,7 +56,7 @@ export default function Footer(){
                         </a>
                     </li>
 
-                    <li>
+                    {/* <li>
                         <a
                             href="/news"
                             className="hover:text-emerald-400 transition-colors"
@@ -72,7 +72,7 @@ export default function Footer(){
                         >
                             Care Vlogs
                         </a>
-                    </li>
+                    </li> */}
 
                 </ul>
 

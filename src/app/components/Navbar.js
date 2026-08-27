@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-emerald-100 bg-white/80 backdrop-blur px-4">
+    <header className="sticky top-0 z-40 w-full border-b border-emerald-100 bg-stone-100 backdrop-blur px-4">
       <div className=" flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           {/* <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
