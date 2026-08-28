@@ -26,15 +26,24 @@ const App = () => {
         "https://images.unsplash.com/photo-1584515933487-779824d29309?w=800"
     },
     {
-      id: 2,
-      title: "CareConnect Now Supports Appointment Tracking",
-      excerpt:
-        "Workers can now manage appointments, arrivals, and completion reports directly from their dashboard.",
-      date: "July 20, 2026",
-      category: "Platform News",
-      image:
-        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
-    }
+    id: 2,
+    title: "Karema Kare Now Supports Appointment Tracking",
+    excerpt:
+      "Workers can now manage appointments, arrivals, and completion reports directly from their dashboard.",
+    date: "July 20, 2026",
+    category: "Platform News",
+    image: "/nursetracking.png"
+  }
+  //   {
+  //     id: 2,
+  //     title: "Karema Kare Now Supports Appointment Tracking",
+  //     excerpt:
+  //       "Workers can now manage appointments, arrivals, and completion reports directly from their dashboard.",
+  //     date: "July 20, 2026",
+  //     category: "Platform News",
+  //     image:
+  // "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800"
+  //   }
   ];
 
   const latestVideos = [
@@ -126,6 +135,132 @@ const App = () => {
           </div>
         </div>
       </section>
+
+       <section className="pt-16 pb-24 items-center text-center px-4">
+        <div className="relative lg:pl-6">
+
+        {/* Soft background glow */}
+        <div className="absolute -inset-6 bg-gradient-to-br from-emerald-200 via-teal-100 to-emerald-200 rounded-[2.5rem] blur-3xl opacity-50" />
+
+        {/* Image container */}
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/70 shadow-2xl shadow-emerald-900/10">
+
+          <img
+            src="/nurse.jpeg"
+            alt="Healthcare professional using the Karema Kare Hub mobile app"
+            className="
+              w-full
+              h-[320px]
+              sm:h-[400px]
+              lg:h-[520px]
+              object-cover
+              object-center
+              transition-transform
+              duration-700
+              hover:scale-[1.03]
+            "
+          />
+
+          {/* Soft gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-transparent" />
+
+          {/* Bottom image caption */}
+          {/* <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-sm font-medium text-emerald-800 shadow-lg">
+
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+
+              Karema Professional
+
+            </div>
+
+            <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-white">
+              Work on your terms.
+            </h3>
+
+            <p className="mt-2 max-w-md text-sm sm:text-base text-white/85">
+              Manage your professional profile, rates, availability and opportunities
+              from wherever you are.
+            </p>
+
+          </div> */}
+
+        </div>
+
+        {/* Floating verification card */}
+        <div className="
+          absolute
+          -bottom-6
+          -left-4
+          sm:-left-8
+          bg-white
+          rounded-2xl
+          shadow-xl
+          border
+          border-emerald-100
+          p-4
+          sm:p-5
+          flex
+          items-center
+          gap-3
+        ">
+
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-100">
+            <ShieldCheck className="h-6 w-6 text-emerald-600" />
+          </div>
+
+          <div>
+            <p className="text-xs text-slate-500">
+              Professional Status
+            </p>
+
+            <p className="font-semibold text-slate-900">
+              Verified & Ready
+            </p>
+          </div>
+
+        </div>
+
+        {/* Floating rates card */}
+        <div className="
+          absolute
+          -top-5
+          -right-4
+          sm:-right-8
+          hidden
+          sm:flex
+          items-center
+          gap-3
+          rounded-2xl
+          bg-white/95
+          backdrop-blur-md
+          border
+          border-emerald-100
+          shadow-xl
+          px-5
+          py-4
+        ">
+
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100">
+            <Wallet className="h-5 w-5 text-teal-600" />
+          </div>
+
+          <div>
+            <p className="text-xs text-slate-500">
+              Your rates
+            </p>
+
+            <p className="font-bold text-slate-900">
+              Set your own
+            </p>
+          </div>
+
+        </div>
+
+        </div>
+
+       </section>
 
       {/* Karema Ecosystem */}
       <section className="py-24 px-4">
@@ -268,13 +403,13 @@ const App = () => {
           {/* Core Values */}
           <div className="mt-12 rounded-3xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 sm:p-10 text-white text-center shadow-xl shadow-emerald-600/20">
 
-            <p className="text-lg sm:text-xl font-semibold tracking-wide">
+            <p className="text-xs sm:text-xl font-semibold sm:tracking-wide">
               Trust.
-              <span className="mx-3 text-emerald-200">•</span>
+              <span className="mx-1 sm:mx-3 text-emerald-200">•</span>
               Opportunity.
-              <span className="mx-3 text-emerald-200">•</span>
+              <span className="mx-1 sm:mx-3 text-emerald-200">•</span>
               Convenience.
-              <span className="mx-3 text-emerald-200">•</span>
+              <span className="mx-1 sm:mx-3 text-emerald-200">•</span>
               Belonging.
             </p>
 
@@ -327,26 +462,36 @@ const App = () => {
                 active
               />
 
-              {/* Learning */}
-              <EcosystemCard
-                title="Karema Learning"
-                description="CPD, tutoring, certifications and workshops."
-                icon={FileCheck2}
-              />
+              <div className="lg:col-start-2 lg:col-span-2">
 
-              {/* Marketplace */}
-              <EcosystemCard
-                title="Karema Marketplace"
-                description="Professional and lifestyle services."
-                icon={Wallet}
-              />
+                {/* Learning */}
+                <EcosystemCard
+                  title="Karema Learning"
+                  description="CPD, tutoring, certifications and workshops."
+                  icon={FileCheck2}
+                />
+
+
+              </div>
+
+             <div className="lg:col-span-2">
+
+
+                {/* Marketplace */}
+                <EcosystemCard
+                  title="Karema Marketplace"
+                  description="Professional and lifestyle services."
+                  icon={Wallet}
+                />
+
+              </div>
 
               {/* Opportunities */}
-              <EcosystemCard
+              {/* <EcosystemCard
                 title="Karema Opportunities"
                 description="Jobs, contracts, gigs and side hustles."
                 icon={Sparkles}
-              />
+              /> */}
 
             </div>
 
@@ -423,7 +568,7 @@ const App = () => {
 
           {/* Latest News */}
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
 
             <div className="space-y-6">
 
@@ -494,7 +639,7 @@ const App = () => {
 
           {/* Video Library */}
 
-          <Card className="border-emerald-100">
+          {/* <Card className="border-emerald-100">
 
             <CardContent className="p-6">
 
@@ -561,7 +706,7 @@ const App = () => {
 
             </CardContent>
 
-          </Card>
+          </Card> */}
 
         </div>
 
@@ -571,7 +716,7 @@ const App = () => {
       <section className="pb-24 mx-4">
         <div className="rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-700 p-10 sm:p-16 text-white text-center shadow-2xl shadow-emerald-600/30">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Ready to freelance on your terms?</h2>
-          <p className="mt-3 text-emerald-100 max-w-xl mx-auto">Join hundreds of verified healthcare professionals earning better rates with CareConnect.</p>
+          <p className="mt-3 text-emerald-100 max-w-xl mx-auto">Join hundreds of verified healthcare professionals earning better rates with Karema Kare.</p>
           <Link href="/apply">
             <Button size="lg" className="mt-8 bg-white text-emerald-700 hover:bg-emerald-50">Start your application →</Button>
           </Link>
