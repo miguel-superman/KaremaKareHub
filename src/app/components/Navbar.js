@@ -23,7 +23,7 @@ export default function Navbar() {
             
           </div> */}
           <img src="/favicon.ico" className="h-10 w-10" />
-          <span className="text-lg font-bold tracking-tight text-slate-900">Karema Kare Hub</span>
+          <span className="text-lg font-bold tracking-tight text-slate-900">Karema</span>
         </Link>
 
         <nav className="flex items-center gap-2">
