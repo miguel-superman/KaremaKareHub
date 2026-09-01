@@ -256,15 +256,15 @@ const App = () => {
                 </div>
 
                 <Badge className="bg-cyan-50 text-cyan-700 hover:bg-cyan-50 border-0 mb-4">
-                  For Care Businesses
+                  For HealthCare Businesses
                 </Badge>
 
-                <h3 className="text-2xl font-bold text-slate-900">
+                {/* <h3 className="text-2xl font-bold text-slate-900">
                   People when you need them.
-                </h3>
+                </h3> */}
 
                 <p className="mt-3 text-slate-600 leading-relaxed">
-                  Find the people you need, when you need them. Connect with
+                  Find the professionals you need, when you need them. Connect with
                   vetted professionals and access services that support your
                   organization's needs.
                 </p>
@@ -343,9 +343,8 @@ const App = () => {
                 active
               />
 
-              <div className="lg:col-start-2 lg:col-span-2">
+              {/* <div className="lg:col-start-2 lg:col-span-2">
 
-                {/* Learning */}
                 <EcosystemCard
                   title="Karema Learning"
                   description="CPD, tutoring, certifications and workshops."
@@ -353,19 +352,19 @@ const App = () => {
                 />
 
 
-              </div>
+              </div> */}
 
-             <div className="lg:col-span-2">
+             {/* <div className="lg:col-span-2"> */}
 
 
                 {/* Marketplace */}
-                <EcosystemCard
+                {/* <EcosystemCard
                   title="Karema Marketplace"
                   description="Professional and lifestyle services."
                   icon={Wallet}
-                />
+                /> */}
 
-              </div>
+              {/* </div> */}
 
               {/* Opportunities */}
               {/* <EcosystemCard
@@ -381,131 +380,9 @@ const App = () => {
         </div>
       </section>
 
-       <section className="pt-16 pb-24 items-center text-center px-4">
-        <div className="relative lg:pl-6">
 
-        {/* Soft background glow */}
-        <div className="absolute -inset-6 bg-gradient-to-br from-emerald-200 via-teal-100 to-emerald-200 rounded-[2.5rem] blur-3xl opacity-50" />
+      
 
-        {/* Image container */}
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/70 shadow-2xl shadow-emerald-900/10">
-
-          <img
-            src="/nurse.jpeg"
-            alt="Healthcare professional using the Karema Kare Hub mobile app"
-            className="
-              w-full
-              h-[320px]
-              sm:h-[400px]
-              lg:h-[520px]
-              object-cover
-              object-center
-              transition-transform
-              duration-700
-              hover:scale-[1.03]
-            "
-          />
-
-          {/* Soft gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-transparent" />
-
-          {/* Bottom image caption */}
-          {/* <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-sm font-medium text-emerald-800 shadow-lg">
-
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-
-              Karema Professional
-
-            </div>
-
-            <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-white">
-              Work on your terms.
-            </h3>
-
-            <p className="mt-2 max-w-md text-sm sm:text-base text-white/85">
-              Manage your professional profile, rates, availability and opportunities
-              from wherever you are.
-            </p>
-
-          </div> */}
-
-        </div>
-
-        {/* Floating verification card */}
-        <div className="
-          absolute
-          -bottom-6
-          -left-4
-          sm:-left-8
-          bg-white
-          rounded-2xl
-          shadow-xl
-          border
-          border-emerald-100
-          p-4
-          sm:p-5
-          flex
-          items-center
-          gap-3
-        ">
-
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-100">
-            <ShieldCheck className="h-6 w-6 text-emerald-600" />
-          </div>
-
-          <div>
-            <p className="text-xs text-slate-500">
-              Professional Status
-            </p>
-
-            <p className="font-semibold text-slate-900">
-              Verified & Ready
-            </p>
-          </div>
-
-        </div>
-
-        {/* Floating rates card */}
-        <div className="
-          absolute
-          -top-5
-          -right-4
-          sm:-right-8
-          hidden
-          sm:flex
-          items-center
-          gap-3
-          rounded-2xl
-          bg-white/95
-          backdrop-blur-md
-          border
-          border-emerald-100
-          shadow-xl
-          px-5
-          py-4
-        ">
-
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100">
-            <Wallet className="h-5 w-5 text-teal-600" />
-          </div>
-
-          <div>
-            <p className="text-xs text-slate-500">
-              Your rates
-            </p>
-
-            <p className="font-bold text-slate-900">
-              Set your own
-            </p>
-          </div>
-
-        </div>
-
-        </div>
-
-       </section>
 
       
 
@@ -535,12 +412,162 @@ const App = () => {
             </Card>
           ))}
         </div>
+
+       
+      </section>
+
+      <section className="pt-16 pb-24 px-4">
+        <div className="relative max-w-6xl mx-auto">
+
+          {/* Soft background glow */}
+          <div className="
+            absolute
+            -inset-6
+            bg-gradient-to-br
+            from-emerald-200
+            via-teal-100
+            to-emerald-200
+            rounded-[2.5rem]
+            blur-3xl
+            opacity-40
+            pointer-events-none
+          " />
+
+          {/* Main image */}
+          <div className="
+            relative
+            overflow-hidden
+            rounded-[2rem]
+            border
+            border-white/70
+            bg-white
+            shadow-2xl
+            shadow-emerald-900/10
+          ">
+
+            <img
+              src="/nurse.jpeg"
+              alt="Healthcare professional using the Karema Kare Hub platform"
+              className="
+                w-full
+                h-[320px]
+                sm:h-[400px]
+                lg:h-[520px]
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                hover:scale-[1.03]
+              "
+            />
+
+            {/* Soft image overlay */}
+            <div className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-emerald-950/35
+              via-transparent
+              to-transparent
+              pointer-events-none
+            " />
+
+          </div>
+
+          {/* Bottom floating card */}
+          <div className="
+            absolute
+            -bottom-6
+            -left-4
+            sm:-left-8
+            bg-white
+            rounded-2xl
+            shadow-xl
+            border
+            border-emerald-100
+            p-4
+            sm:p-5
+            flex
+            items-center
+            gap-3
+          ">
+
+            <div className="
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-full
+              bg-emerald-100
+            ">
+              <ShieldCheck className="h-6 w-6 text-emerald-600" />
+            </div>
+
+            <div>
+              <p className="text-xs text-slate-500">
+                Professional Status
+              </p>
+
+              <p className="font-semibold text-slate-900">
+                Verified & Ready
+              </p>
+            </div>
+
+          </div>
+
+
+          {/* Top right floating card */}
+          <div className="
+            absolute
+            -top-5
+            -right-4
+            sm:-right-8
+            hidden
+            sm:flex
+            items-center
+            gap-3
+            rounded-2xl
+            bg-white/95
+            backdrop-blur-md
+            border
+            border-emerald-100
+            shadow-xl
+            px-5
+            py-4
+          ">
+
+            <div className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-full
+              bg-teal-100
+            ">
+              <Wallet className="h-5 w-5 text-teal-600" />
+            </div>
+
+            <div>
+              <p className="text-xs text-slate-500">
+                Your rates
+              </p>
+
+              <p className="font-bold text-slate-900">
+                Set your own
+              </p>
+            </div>
+
+          </div>
+
+        </div>
       </section>
 
       {/* News & Learning */}
 
       <section className="pb-24 mx-4">
-
+{/* 
         <div className="flex items-center justify-between mb-10">
 
           <div>
@@ -571,15 +598,17 @@ const App = () => {
 
           </Link>
 
-        </div>
+        </div> */}
 
-        <div className="grid lg:grid-cols-3 gap-8">
 
           {/* Latest News */}
+          
+        <div className="grid lg:grid-cols-3 gap-8">
 
-          <div className="lg:col-span-3">
 
-            <div className="space-y-6">
+          {/* <div className="lg:col-span-3"> */}
+
+            {/* <div className="space-y-6">
 
               {latestNews.map((article)=>(
 
@@ -642,9 +671,9 @@ const App = () => {
 
               ))}
 
-            </div>
+            </div> */}
 
-          </div>
+          {/* </div> */}
 
           {/* Video Library */}
 

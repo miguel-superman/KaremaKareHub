@@ -14,7 +14,7 @@ export default function Footer(){
 
                 <h2 className="text-2xl font-bold text-white">
 
-                    Karema Kare Hub
+                    Karema
 
                 </h2>
 
@@ -43,7 +43,7 @@ export default function Footer(){
                             href="/apply"
                             className="hover:text-emerald-400 transition-colors"
                         >
-                            Apply as a Worker
+                            Apply as a Professional
                         </a>
                     </li>
 
@@ -52,7 +52,7 @@ export default function Footer(){
                             href="/login"
                             className="hover:text-emerald-400 transition-colors"
                         >
-                            Worker Login
+                            Karema Professional Login
                         </a>
                     </li>
 

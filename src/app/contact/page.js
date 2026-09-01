@@ -68,13 +68,13 @@ export default function ContactPage() {
             href="mailto:karemababysitters@gmail.com"
           />
 
-          <ContactCard
+          {/* <ContactCard
             icon={Phone}
             title="Call Us"
             description="Speak directly with a member of the Karema Kare Hub team."
             value="+1 (876) 000-0000"
             href="tel:+18760000000"
-          />
+          /> */}
 
           {/* <ContactCard
             icon={MessageCircle}
