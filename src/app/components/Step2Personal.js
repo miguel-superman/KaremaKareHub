@@ -275,8 +275,40 @@ export default function Step2Personal({
     data
 }) {
 
-    const [form, setForm] = useState({
+    // const [form, setForm] = useState({
 
+    //     accountType: data?.accountType || "",
+
+    //     // Individual
+    //     firstName: data?.firstName || "",
+    //     lastName: data?.lastName || "",
+    //     phone: data?.phone || "",
+    //     gender: data?.gender || "",
+    //     dob: data?.dob || "",
+
+    //     // Business
+    //     businessName: data?.businessName || "",
+    //     registrationNumber: data?.registrationNumber || "",
+    //     businessPhone: data?.businessPhone || "",
+    //     businessEmail: data?.businessEmail || "",
+
+    //     // Address
+    //     address: data?.address || "",
+    //     city: data?.city || "",
+    //     parish: data?.parish || "",
+
+    //     // Individual emergency contact
+    //     emergencyName: data?.emergencyName || "",
+    //     emergencyPhone: data?.emergencyPhone || "",
+
+    //     // Business contact person
+    //     contactName: data?.contactName || "",
+    //     contactPhone: data?.contactPhone || "",
+
+    // });
+
+
+    const [form, setForm] = useState({
         accountType: data?.accountType || "",
 
         // Individual
@@ -284,6 +316,7 @@ export default function Step2Personal({
         lastName: data?.lastName || "",
         phone: data?.phone || "",
         gender: data?.gender || "",
+        nationality: data?.nationality || "",
         dob: data?.dob || "",
 
         // Business
@@ -304,8 +337,9 @@ export default function Step2Personal({
         // Business contact person
         contactName: data?.contactName || "",
         contactPhone: data?.contactPhone || "",
-
     });
+
+
 
     const [error, setError] = useState("");
 
@@ -658,10 +692,11 @@ export default function Step2Personal({
 
 
                             <div className="
-                            grid
-                            md:grid-cols-2
-                            gap-6
-                            mt-6
+                                grid
+                                md:grid-cols-2
+                                lg:grid-cols-3
+                                gap-6
+                                mt-6
                             ">
 
 
@@ -819,6 +854,93 @@ export default function Step2Personal({
 
                                     </select>
 
+                                </div>
+
+                                {/* Nationality */} 
+                                {/* <div> 
+                                    <label className="font-medium"> 
+                                        Nationality 
+                                    </label> 
+                                    <input type="text" name="nationality" value={form.nationality} onChange={updateField} placeholder="e.g. Jamaican" className=" w-full mt-2 border rounded-lg h-12 px-4 " /> 
+                                </div> */}
+
+                                {/* Nationality */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Nationality
+                                    </label>
+
+                                    <select
+                                        name="nationality"
+                                        value={form.nationality}
+                                        onChange={updateField}
+                                        className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3
+                                                text-gray-900 focus:border-emerald-500 focus:ring-2
+                                                focus:ring-emerald-200 outline-none"
+                                    >
+                                        <option value="">Select nationality</option>
+
+                                        <option value="Jamaican">Jamaican</option>
+                                        <option value="American">American / United States</option>
+                                        <option value="Canadian">Canadian</option>
+                                        <option value="British">British / United Kingdom</option>
+
+                                        <optgroup label="Caribbean">
+                                        <option value="Trinidadian & Tobagonian">
+                                            Trinidadian & Tobagonian
+                                        </option>
+                                        <option value="Haitian">Haitian</option>
+                                        <option value="Cuban">Cuban</option>
+                                        <option value="Dominican">Dominican</option>
+                                        <option value="Dominican Republic">
+                                            Dominican Republic
+                                        </option>
+                                        <option value="Guyanese">Guyanese</option>
+                                        <option value="Barbadian">Barbadian</option>
+                                        <option value="Bahamian">Bahamian</option>
+                                        <option value="Grenadian">Grenadian</option>
+                                        <option value="Vincentian">Vincentian</option>
+                                        <option value="Saint Lucian">Saint Lucian</option>
+                                        <option value="Antiguan & Barbudan">
+                                            Antiguan & Barbudan
+                                        </option>
+                                        <option value="Belizean">Belizean</option>
+                                        </optgroup>
+
+                                        <optgroup label="North & South America">
+                                        <option value="Mexican">Mexican</option>
+                                        <option value="Brazilian">Brazilian</option>
+                                        <option value="Colombian">Colombian</option>
+                                        <option value="Venezuelan">Venezuelan</option>
+                                        </optgroup>
+
+                                        <optgroup label="Europe">
+                                        <option value="German">German</option>
+                                        <option value="French">French</option>
+                                        <option value="Italian">Italian</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="Dutch">Dutch</option>
+                                        <option value="Irish">Irish</option>
+                                        </optgroup>
+
+                                        <optgroup label="Asia">
+                                        <option value="Indian">Indian</option>
+                                        <option value="Chinese">Chinese</option>
+                                        <option value="Filipino">Filipino</option>
+                                        </optgroup>
+
+                                        <optgroup label="Africa">
+                                        <option value="Nigerian">Nigerian</option>
+                                        <option value="South African">South African</option>
+                                        </optgroup>
+
+                                        <optgroup label="Oceania">
+                                        <option value="Australian">Australian</option>
+                                        <option value="New Zealander">New Zealander</option>
+                                        </optgroup>
+
+                                        <option value="Other">Other</option>
+                                    </select>
                                 </div>
 
 
