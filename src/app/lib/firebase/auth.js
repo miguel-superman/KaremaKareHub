@@ -19,6 +19,7 @@
 
 import {
     createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
     sendEmailVerification
 } from "firebase/auth";
 
@@ -33,9 +34,9 @@ export async function registerWorker(email, password) {
             password
         );
 
-    await sendEmailVerification(
-        credential.user
-    );
+    // await sendEmailVerification(
+    //     credential.user
+    // );
 
     return credential.user;
 

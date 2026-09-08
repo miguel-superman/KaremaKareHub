@@ -62,11 +62,211 @@
 //   return <PendingDashboard worker={worker} />;
 // }
 
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import { auth, db } from "../../lib/firebase/firebase";
+// import { doc, getDoc } from "firebase/firestore";
+// import { useRouter } from "next/navigation";
+
+// import PendingDashboard from "./PendingDashboard";
+// import ApprovedDashboard from "./ApprovedDashboard";
+// import RejectedDashboard from "./RejectedDashboard";
+
+
+// export default function WorkerDashboard() {
+
+
+//     const router = useRouter();
+
+
+//     const [loading, setLoading] = useState(true);
+
+//     const [worker, setWorker] = useState(null);
+
+
+
+//     useEffect(() => {
+
+
+//         async function loadWorker() {
+
+
+//             const user = auth.currentUser;
+
+//             const now = Date.now();
+
+
+
+//             if (!user) {
+
+//                 setLoading(false);
+
+//                 return;
+
+//             }
+
+
+
+//             const ref = doc(
+//                 db,
+//                 "healthcareWorkers",
+//                 user.uid
+//             );
+
+
+//             const snap = await getDoc(ref);
+
+
+
+//             if (snap.exists()) {
+
+
+//                 const workerData = {
+
+//                     id:snap.id,
+
+//                     ...snap.data()
+
+//                 };
+
+
+//                 setWorker(workerData);
+
+
+
+//                 // Check subscription expiry
+
+//                 const expiry =
+//                     workerData.subscriptionExpiry;
+
+
+
+//                 if (
+//                     expiry &&
+//                     expiry < now
+//                 ) {
+
+
+//                     router.push(
+//                         `/dashboard/subscription/renewal?workerId=${workerData.id}`
+//                     );
+
+
+//                     return;
+
+//                 }
+
+
+
+//             }
+
+
+
+//             setLoading(false);
+
+
+//         }
+
+
+//         loadWorker();
+
+
+//     }, [router]);
+
+
+
+//     if (loading) {
+
+//         return (
+
+//             <div className="min-h-screen flex items-center justify-center">
+
+//                 Loading dashboard...
+
+//             </div>
+
+//         );
+
+//     }
+
+
+
+//     if (!worker) {
+
+//         return (
+
+//             <div className="min-h-screen flex items-center justify-center">
+
+//                 Worker profile not found.
+
+//             </div>
+
+//         );
+
+//     }
+
+
+
+//     const status =
+//         worker.verification?.status || "pending";
+
+
+
+//     if (status === "Approved") {
+
+//         return (
+
+//             <ApprovedDashboard
+//                 worker={worker}
+//             />
+
+//         );
+
+//     }
+
+
+
+//     if (status === "Rejected") {
+
+//         return (
+
+//             <RejectedDashboard
+//                 worker={worker}
+//             />
+
+//         );
+
+//     }
+
+
+
+//     return (
+
+//         <PendingDashboard
+//             worker={worker}
+//         />
+
+//     );
+
+
+// }
+
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { auth, db } from "../../lib/firebase/firebase";
-import { doc, getDoc } from "firebase/firestore";
+
+import {
+    doc,
+    getDoc
+} from "firebase/firestore";
+
+import {
+    onAuthStateChanged
+} from "firebase/auth";
+
 import { useRouter } from "next/navigation";
 
 import PendingDashboard from "./PendingDashboard";
@@ -76,105 +276,193 @@ import RejectedDashboard from "./RejectedDashboard";
 
 export default function WorkerDashboard() {
 
-
     const router = useRouter();
 
-
     const [loading, setLoading] = useState(true);
-
     const [worker, setWorker] = useState(null);
-
 
 
     useEffect(() => {
 
+        let unsubscribe;
 
-        async function loadWorker() {
+        unsubscribe = onAuthStateChanged(
+            auth,
+            async (user) => {
 
+                try {
 
-            const user = auth.currentUser;
+                    // ==========================================
+                    // USER NOT SIGNED IN
+                    // ==========================================
 
-            const now = Date.now();
+                    if (!user) {
 
+                        setWorker(null);
+                        setLoading(false);
 
-
-            if (!user) {
-
-                setLoading(false);
-
-                return;
-
-            }
-
-
-
-            const ref = doc(
-                db,
-                "healthcareWorkers",
-                user.uid
-            );
+                        return;
+                    }
 
 
-            const snap = await getDoc(ref);
-
-
-
-            if (snap.exists()) {
-
-
-                const workerData = {
-
-                    id:snap.id,
-
-                    ...snap.data()
-
-                };
-
-
-                setWorker(workerData);
-
-
-
-                // Check subscription expiry
-
-                const expiry =
-                    workerData.subscriptionExpiry;
-
-
-
-                if (
-                    expiry &&
-                    expiry < now
-                ) {
-
-
-                    router.push(
-                        `/dashboard/subscription/renewal?workerId=${workerData.id}`
+                    console.log(
+                        "Authenticated worker UID:",
+                        user.uid
                     );
 
 
-                    return;
+                    // ==========================================
+                    // GET WORKER PROFILE
+                    // ==========================================
+
+                    const ref = doc(
+                        db,
+                        "healthcareWorkers",
+                        user.uid
+                    );
+
+
+                    const snap = await getDoc(ref);
+
+
+                    console.log(
+                        "Worker document exists:",
+                        snap.exists()
+                    );
+
+
+                    if (!snap.exists()) {
+
+                        console.error(
+                            "Worker profile not found for UID:",
+                            user.uid
+                        );
+
+                        setWorker(null);
+                        setLoading(false);
+
+                        return;
+                    }
+
+
+                    // ==========================================
+                    // WORKER DATA
+                    // ==========================================
+
+                    const workerData = {
+
+                        id: snap.id,
+
+                        ...snap.data()
+
+                    };
+
+
+                    console.log(
+                        "Worker profile loaded:",
+                        workerData
+                    );
+
+
+                    setWorker(workerData);
+
+
+                    // ==========================================
+                    // SUBSCRIPTION EXPIRY
+                    // ==========================================
+
+                    const expiry =
+                        workerData.subscriptionExpiry;
+
+
+                    if (expiry) {
+
+                        let expiryTime;
+
+
+                        // Firestore Timestamp
+
+                        if (
+                            typeof expiry.toMillis === "function"
+                        ) {
+
+                            expiryTime =
+                                expiry.toMillis();
+
+                        }
+
+                        // JavaScript Date
+
+                        else if (
+                            expiry instanceof Date
+                        ) {
+
+                            expiryTime =
+                                expiry.getTime();
+
+                        }
+
+                        // Number
+
+                        else if (
+                            typeof expiry === "number"
+                        ) {
+
+                            expiryTime =
+                                expiry;
+
+                        }
+
+
+                        if (
+                            expiryTime &&
+                            expiryTime < Date.now()
+                        ) {
+
+                            router.push(
+                                `/dashboard/subscription/renewal?workerId=${workerData.id}`
+                            );
+
+                            return;
+                        }
+
+                    }
+
+
+                    setLoading(false);
 
                 }
 
+                catch (error) {
 
+                    console.error(
+                        "Error loading worker:",
+                        error
+                    );
+
+                    setWorker(null);
+                    setLoading(false);
+
+                }
 
             }
+        );
 
 
+        return () => {
 
-            setLoading(false);
+            if (unsubscribe) {
+                unsubscribe();
+            }
 
-
-        }
-
-
-        loadWorker();
-
+        };
 
     }, [router]);
 
 
+    // ==========================================
+    // LOADING
+    // ==========================================
 
     if (loading) {
 
@@ -191,6 +479,9 @@ export default function WorkerDashboard() {
     }
 
 
+    // ==========================================
+    // NO WORKER
+    // ==========================================
 
     if (!worker) {
 
@@ -207,11 +498,17 @@ export default function WorkerDashboard() {
     }
 
 
+    // ==========================================
+    // VERIFICATION STATUS
+    // ==========================================
 
     const status =
         worker.verification?.status || "pending";
 
 
+    // ==========================================
+    // APPROVED
+    // ==========================================
 
     if (status === "Approved") {
 
@@ -226,6 +523,9 @@ export default function WorkerDashboard() {
     }
 
 
+    // ==========================================
+    // REJECTED
+    // ==========================================
 
     if (status === "Rejected") {
 
@@ -240,6 +540,9 @@ export default function WorkerDashboard() {
     }
 
 
+    // ==========================================
+    // PENDING
+    // ==========================================
 
     return (
 
@@ -248,6 +551,5 @@ export default function WorkerDashboard() {
         />
 
     );
-
 
 }

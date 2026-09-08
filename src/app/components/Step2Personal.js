@@ -846,12 +846,6 @@ export default function Step2Personal({
 
                                         </option>
 
-                                        <option>
-
-                                            Prefer not to say
-
-                                        </option>
-
                                     </select>
 
                                 </div>

@@ -23,7 +23,7 @@ export async function submitWorkerApplication(application) {
         application,
         uploadedDocuments
     );
-
+    
     return user;
 
 }
