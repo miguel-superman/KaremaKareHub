@@ -414,17 +414,17 @@ export default function WorkerDashboard() {
                         }
 
 
-                        if (
-                            expiryTime &&
-                            expiryTime < Date.now()
-                        ) {
+                        // if (
+                        //     expiryTime &&
+                        //     expiryTime < Date.now()
+                        // ) {
 
-                            router.push(
-                                `/dashboard/subscription/renewal?workerId=${workerData.id}`
-                            );
+                        //     router.push(
+                        //         `/dashboard/subscription/renewal?workerId=${workerData.id}`
+                        //     );
 
-                            return;
-                        }
+                        //     return;
+                        // }
 
                     }
 

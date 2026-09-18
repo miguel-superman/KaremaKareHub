@@ -526,22 +526,22 @@ export default function Step4Rates({
 
             hourlyRate:
                 form.hourlyRate
-                    ? `${form.currency}$${form.hourlyRate}`
+                    ? `${form.hourlyRate}`
                     : "",
 
             homeVisitRate:
                 form.homeVisitRate
-                    ? `${form.currency}$${form.homeVisitRate}`
+                    ? `${form.homeVisitRate}`
                     : "",
 
             overnightRate:
                 form.overnightRate
-                    ? `${form.currency}$${form.overnightRate}`
+                    ? `${form.overnightRate}`
                     : "",
 
             travelFee:
                 form.travelFee
-                    ? `${form.currency}$${form.travelFee}`
+                    ? `${form.travelFee}`
                     : ""
 
         };

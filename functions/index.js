@@ -742,7 +742,7 @@ exports.notifyNewHealthcareWorker = onDocumentCreated(
                 to:
                     process.env.VERIFICATION_EMAIL,
 
-                cc: process.env.SECONDARY_VERIFICATION_EMAIL,
+                // cc: process.env.SECONDARY_VERIFICATION_EMAIL,
 
                 subject:
                     "🩺 New Healthcare Professional Application — Action Required",

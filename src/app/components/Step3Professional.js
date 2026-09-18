@@ -203,9 +203,13 @@ export default function Step3Professional({
                 Registered Nurse
                 </option>
 
-                <option>
+                {/* <option>
                 Caregiver
-                </option>
+                </option> */}
+
+                {/* <option>
+                Patient Care Assistant
+                </option> */}
 
                 <option>
                 Medical Doctor

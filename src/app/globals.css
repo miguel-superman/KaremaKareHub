@@ -142,3 +142,27 @@ focus:ring-2
 focus:ring-emerald-500;
 
 }
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
+}
+.animate-drift { animation: drift 14s ease-in-out infinite; }
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float-slow { animation: floatCard 6s ease-in-out infinite; }
+.animate-float-slower {
+  animation: floatCard 7s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift,
+  .animate-float-slow,
+  .animate-float-slower {
+    animation: none !important;
+  }
+}
