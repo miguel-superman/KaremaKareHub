@@ -18,6 +18,11 @@ export default function ProfessionalCard({ worker }) {
                 />
 
                 <Info
+                    label="Governing Act"
+                    value={professional.regulatoryAct}
+                />
+
+                <Info
                     label="License Number"
                     value={professional.licenseNumber}
                 />

@@ -766,3 +766,751 @@ exports.notifyNewHealthcareWorker = onDocumentCreated(
         }
     }
 );
+
+// ============================================================
+// NEW REVIEW SUBMITTED
+// ============================================================
+
+exports.notifyNewReviewSubmitted = onDocumentCreated(
+    "reviews/{reviewId}",
+    async (event) => {
+        try {
+            const snapshot = event.data;
+
+            if (!snapshot) {
+                console.log("No review document found.");
+                return;
+            }
+
+            const review = snapshot.data();
+            const reviewId = event.params.reviewId;
+
+            // ====================================================
+            // REVIEW INFORMATION
+            // ====================================================
+
+            const clientName =
+                review.clientName ||
+                "Client";
+
+            const workerName =
+                review.workerName ||
+                "Healthcare Professional";
+
+            const profession =
+                review.profession ||
+                review.workerProfession ||
+                "Healthcare Professional";
+
+            const rating =
+                Number(review.rating) || 0;
+
+            const comment =
+                review.comment ||
+                "No written comment was provided.";
+
+            const reviewStatus =
+                review.status ||
+                "pending";
+
+            // ====================================================
+            // REVIEW URL
+            // ====================================================
+
+            const reviewUrl =
+                `https://karemakarehubbackend.web.app/admin/review/${reviewId}`;
+
+            // ====================================================
+            // DATE
+            // ====================================================
+
+            let submittedDate = "Recently submitted";
+
+            if (review.createdAt) {
+                try {
+                    const date =
+                        review.createdAt.toDate
+                            ? review.createdAt.toDate()
+                            : new Date(review.createdAt);
+
+                    submittedDate =
+                        date.toLocaleString("en-JM", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "2-digit"
+                        });
+                } catch (dateError) {
+                    console.log(
+                        "Could not format review date:",
+                        dateError
+                    );
+                }
+            }
+
+            // ====================================================
+            // STAR DISPLAY
+            // ====================================================
+
+            const stars = [1, 2, 3, 4, 5]
+                .map((star) =>
+                    star <= rating
+                        ? "★"
+                        : "☆"
+                )
+                .join(" ");
+
+            // ====================================================
+            // LOGGING
+            // ====================================================
+
+            console.log(
+                `New review submitted by ${clientName}`
+            );
+
+            console.log(
+                `Review ID: ${reviewId}`
+            );
+
+            console.log(
+                `Healthcare Professional: ${workerName}`
+            );
+
+            console.log(
+                `Rating: ${rating}/5`
+            );
+
+            console.log(
+                `Status: ${reviewStatus}`
+            );
+
+            // ====================================================
+            // GMAIL TRANSPORTER
+            // ====================================================
+
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                    user:
+                        process.env.NEXT_PUBLIC_GMAIL_APP_USER,
+
+                    pass:
+                        process.env.NEXT_PUBLIC_GMAIL_APP_PASSWORD
+                }
+            });
+
+            // ====================================================
+            // EMAIL HTML
+            // ====================================================
+
+            const emailHtml = `
+            <!DOCTYPE html>
+
+            <html>
+
+            <head>
+
+                <meta charset="UTF-8">
+
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                >
+
+                <title>
+                    New Review Requires Approval
+                </title>
+
+            </head>
+
+            <body
+                style="
+                    margin:0;
+                    padding:0;
+                    background-color:#f4f7fb;
+                    font-family:Arial, Helvetica, sans-serif;
+                "
+            >
+
+                <table
+                    width="100%"
+                    cellpadding="0"
+                    cellspacing="0"
+                    border="0"
+                    style="
+                        background-color:#f4f7fb;
+                    "
+                >
+
+                    <tr>
+
+                        <td
+                            align="center"
+                            style="
+                                padding:40px 15px;
+                            "
+                        >
+
+                            <table
+                                width="600"
+                                cellpadding="0"
+                                cellspacing="0"
+                                border="0"
+                                style="
+                                    width:100%;
+                                    max-width:600px;
+                                    background:#ffffff;
+                                    border-radius:18px;
+                                    overflow:hidden;
+                                    box-shadow:
+                                        0 4px 20px
+                                        rgba(0,0,0,0.08);
+                                "
+                            >
+
+                                <!-- ================================================= -->
+                                <!-- LOGO -->
+                                <!-- ================================================= -->
+
+                                <tr>
+
+                                    <td
+                                        align="center"
+                                        style="
+                                            padding:32px 30px 24px;
+                                            background:#ffffff;
+                                        "
+                                    >
+
+                                        <img
+                                            src="https://karemakarehubbackend.web.app/klogo.jpeg"
+                                            alt="Karema Kare Hub"
+                                            width="220"
+                                            style="
+                                                display:block;
+                                                width:220px;
+                                                max-width:100%;
+                                                height:auto;
+                                                margin:0 auto;
+                                            "
+                                        >
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ================================================= -->
+                                <!-- HEADER -->
+                                <!-- ================================================= -->
+
+                                <tr>
+
+                                    <td
+                                        style="
+                                            padding:38px 40px;
+                                            background:#0f766e;
+                                            text-align:center;
+                                        "
+                                    >
+
+                                        <div
+                                            style="
+                                                display:inline-block;
+                                                width:54px;
+                                                height:54px;
+                                                line-height:54px;
+                                                background:#ffffff;
+                                                border-radius:50%;
+                                                font-size:28px;
+                                                margin-bottom:14px;
+                                            "
+                                        >
+                                            ★
+                                        </div>
+
+                                        <h1
+                                            style="
+                                                margin:0;
+                                                color:#ffffff;
+                                                font-size:25px;
+                                                line-height:1.3;
+                                                font-weight:700;
+                                            "
+                                        >
+                                            New Review Submitted
+                                        </h1>
+
+                                        <p
+                                            style="
+                                                margin:10px 0 0;
+                                                color:#dff7f4;
+                                                font-size:15px;
+                                                line-height:1.6;
+                                            "
+                                        >
+                                            A new customer review is
+                                            awaiting approval.
+                                        </p>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ================================================= -->
+                                <!-- CONTENT -->
+                                <!-- ================================================= -->
+
+                                <tr>
+
+                                    <td
+                                        style="
+                                            padding:35px 40px;
+                                        "
+                                    >
+
+                                        <p
+                                            style="
+                                                margin:0 0 20px;
+                                                color:#374151;
+                                                font-size:16px;
+                                                line-height:1.6;
+                                            "
+                                        >
+                                            Hello,
+                                        </p>
+
+                                        <p
+                                            style="
+                                                margin:0 0 25px;
+                                                color:#4b5563;
+                                                font-size:15px;
+                                                line-height:1.7;
+                                            "
+                                        >
+                                            A new customer review has been
+                                            submitted through Karema Kare Hub
+                                            and is currently waiting for
+                                            administrative approval.
+                                        </p>
+
+
+                                        <!-- ================================================= -->
+                                        <!-- STATUS -->
+                                        <!-- ================================================= -->
+
+                                        <table
+                                            width="100%"
+                                            cellpadding="0"
+                                            cellspacing="0"
+                                            border="0"
+                                            style="
+                                                margin-bottom:25px;
+                                                background:#fff7ed;
+                                                border:1px solid #fed7aa;
+                                                border-radius:10px;
+                                            "
+                                        >
+
+                                            <tr>
+
+                                                <td
+                                                    style="
+                                                        padding:15px 18px;
+                                                        text-align:center;
+                                                    "
+                                                >
+
+                                                    <span
+                                                        style="
+                                                            color:#c2410c;
+                                                            font-size:13px;
+                                                            font-weight:700;
+                                                            letter-spacing:0.5px;
+                                                        "
+                                                    >
+                                                        REVIEW REQUIRES APPROVAL
+                                                    </span>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+
+                                        <!-- ================================================= -->
+                                        <!-- RATING -->
+                                        <!-- ================================================= -->
+
+                                        <table
+                                            width="100%"
+                                            cellpadding="0"
+                                            cellspacing="0"
+                                            border="0"
+                                            style="
+                                                margin-bottom:25px;
+                                                background:#fffbeb;
+                                                border:1px solid #fde68a;
+                                                border-radius:12px;
+                                            "
+                                        >
+
+                                            <tr>
+
+                                                <td
+                                                    align="center"
+                                                    style="
+                                                        padding:22px 18px;
+                                                    "
+                                                >
+
+                                                    <div
+                                                        style="
+                                                            color:#f59e0b;
+                                                            font-size:28px;
+                                                            letter-spacing:3px;
+                                                        "
+                                                    >
+                                                        ${stars}
+                                                    </div>
+
+                                                    <div
+                                                        style="
+                                                            margin-top:8px;
+                                                            color:#92400e;
+                                                            font-size:14px;
+                                                            font-weight:600;
+                                                        "
+                                                    >
+                                                        ${rating} out of 5 stars
+                                                    </div>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+
+                                        <!-- ================================================= -->
+                                        <!-- REVIEW DETAILS -->
+                                        <!-- ================================================= -->
+
+                                        <h2
+                                            style="
+                                                margin:0 0 15px;
+                                                color:#111827;
+                                                font-size:18px;
+                                            "
+                                        >
+                                            Review Details
+                                        </h2>
+
+
+                                        <table
+                                            width="100%"
+                                            cellpadding="0"
+                                            cellspacing="0"
+                                            border="0"
+                                            style="
+                                                background:#f8fafc;
+                                                border-radius:10px;
+                                                overflow:hidden;
+                                            "
+                                        >
+
+                                            <tr>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#6b7280;
+                                                        font-size:14px;
+                                                        width:40%;
+                                                    "
+                                                >
+                                                    Client
+                                                </td>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#111827;
+                                                        font-size:14px;
+                                                        font-weight:600;
+                                                    "
+                                                >
+                                                    ${clientName}
+                                                </td>
+
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#6b7280;
+                                                        font-size:14px;
+                                                    "
+                                                >
+                                                    Professional
+                                                </td>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#111827;
+                                                        font-size:14px;
+                                                        font-weight:600;
+                                                    "
+                                                >
+                                                    ${workerName}
+                                                </td>
+
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#6b7280;
+                                                        font-size:14px;
+                                                    "
+                                                >
+                                                    Profession
+                                                </td>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#111827;
+                                                        font-size:14px;
+                                                        font-weight:600;
+                                                    "
+                                                >
+                                                    ${profession}
+                                                </td>
+
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#6b7280;
+                                                        font-size:14px;
+                                                    "
+                                                >
+                                                    Submitted
+                                                </td>
+
+                                                <td
+                                                    style="
+                                                        padding:13px 18px;
+                                                        color:#111827;
+                                                        font-size:14px;
+                                                    "
+                                                >
+                                                    ${submittedDate}
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+
+                                        <!-- ================================================= -->
+                                        <!-- COMMENT -->
+                                        <!-- ================================================= -->
+
+                                        <h2
+                                            style="
+                                                margin:30px 0 15px;
+                                                color:#111827;
+                                                font-size:18px;
+                                            "
+                                        >
+                                            Customer Comment
+                                        </h2>
+
+                                        <div
+                                            style="
+                                                padding:20px;
+                                                background:#f8fafc;
+                                                border-left:4px solid #0f766e;
+                                                border-radius:8px;
+                                            "
+                                        >
+
+                                            <p
+                                                style="
+                                                    margin:0;
+                                                    color:#4b5563;
+                                                    font-size:15px;
+                                                    line-height:1.7;
+                                                "
+                                            >
+                                                ${comment}
+                                            </p>
+
+                                        </div>
+
+
+                                        <!-- ================================================= -->
+                                        <!-- ACTION -->
+                                        <!-- ================================================= -->
+
+                                        <div
+                                            style="
+                                                text-align:center;
+                                                margin-top:32px;
+                                            "
+                                        >
+
+                                            <a
+                                                href="${reviewUrl}"
+                                                style="
+                                                    display:inline-block;
+                                                    background:#0f766e;
+                                                    color:#ffffff;
+                                                    text-decoration:none;
+                                                    padding:15px 30px;
+                                                    border-radius:9px;
+                                                    font-size:15px;
+                                                    font-weight:700;
+                                                "
+                                            >
+                                                Review Submission
+                                            </a>
+
+                                        </div>
+
+
+                                        <p
+                                            style="
+                                                margin:28px 0 0;
+                                                color:#6b7280;
+                                                font-size:13px;
+                                                line-height:1.6;
+                                                text-align:center;
+                                            "
+                                        >
+                                            Please review the customer's
+                                            feedback before approving or
+                                            rejecting this submission.
+                                        </p>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ================================================= -->
+                                <!-- FOOTER -->
+                                <!-- ================================================= -->
+
+                                <tr>
+
+                                    <td
+                                        align="center"
+                                        style="
+                                            padding:25px 30px;
+                                            background:#f8fafc;
+                                            border-top:1px solid #e5e7eb;
+                                        "
+                                    >
+
+                                        <p
+                                            style="
+                                                margin:0;
+                                                color:#374151;
+                                                font-size:13px;
+                                                font-weight:600;
+                                            "
+                                        >
+                                            Karema Kare Hub
+                                        </p>
+
+                                        <p
+                                            style="
+                                                margin:6px 0 0;
+                                                color:#9ca3af;
+                                                font-size:12px;
+                                                line-height:1.5;
+                                            "
+                                        >
+                                            Connecting clients with trusted
+                                            healthcare professionals.
+                                        </p>
+
+                                        <p
+                                            style="
+                                                margin:12px 0 0;
+                                                color:#9ca3af;
+                                                font-size:11px;
+                                            "
+                                        >
+                                            This is an automated notification.
+                                            Please do not reply to this email.
+                                        </p>
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </body>
+
+            </html>
+            `;
+
+            // ====================================================
+            // SEND EMAIL
+            // ====================================================
+
+            await transporter.sendMail({
+
+                from:
+                    `"Karema Kare Hub" <${process.env.NEXT_PUBLIC_GMAIL_APP_USER}>`,
+
+                to:
+                    process.env.VERIFICATION_EMAIL,
+
+                subject:
+                    `⭐ New Review Requires Approval — ${rating}/5 — ${workerName}`,
+
+                html:
+                    emailHtml
+            });
+
+            console.log(
+                `Review notification email successfully sent for ${reviewId}`
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Failed to send review notification:",
+                error
+            );
+
+            throw error;
+        }
+    }
+);

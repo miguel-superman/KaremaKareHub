@@ -6,6 +6,8 @@ validateProfessional
 }
 from "../lib/firebase/validation";
 
+import { jamaicaHealthcareRegulations } from "@/lib/jamaicaHealthcareRegulations";
+
 
 export default function Step3Professional({
     next,
@@ -15,6 +17,9 @@ export default function Step3Professional({
 }) {
 
     const [showLicenseHelp, setShowLicenseHelp] = useState(false);
+
+    const regulation =
+    jamaicaHealthcareRegulations[data.profession];
 
 
         
@@ -263,6 +268,17 @@ export default function Step3Professional({
 
 
         </div>
+
+        {form.profession &&
+            jamaicaHealthcareRegulations[form.profession] && (
+                <RegulatoryInformation
+                    regulation={
+                        jamaicaHealthcareRegulations[
+                            form.profession
+                        ]
+                    }
+                />
+            )}
 
 
 
@@ -1018,4 +1034,154 @@ export default function Step3Professional({
     );
 
 
+}
+
+function RegulatoryInformation({ regulation }) {
+
+    return (
+        <div className="mt-6 rounded-2xl border border-teal-200 bg-teal-50 p-6">
+
+            {/* Header */}
+
+            <div className="flex items-start gap-4">
+
+                <div
+                    className="
+                        flex
+                        h-10
+                        w-10
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-teal-700
+                        text-white
+                        text-lg
+                    "
+                >
+                    ⚖
+                </div>
+
+                <div>
+
+                    <h3 className="text-lg font-semibold text-teal-950">
+
+                        Jamaican Professional Regulation
+
+                    </h3>
+
+                    <p className="mt-1 text-sm leading-6 text-teal-800">
+
+                        Your selected profession is subject
+                        to professional regulation in Jamaica.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {/* Regulatory information */}
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+
+                {/* Governing Act */}
+
+                <div className="rounded-xl border border-teal-100 bg-white p-4">
+
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+
+                        Governing Act
+
+                    </p>
+
+                    <p className="mt-1 font-semibold text-gray-900">
+
+                        {regulation.act}
+
+                    </p>
+
+                </div>
+
+
+                {/* Regulatory Body */}
+
+                <div className="rounded-xl border border-teal-100 bg-white p-4">
+
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+
+                        Regulatory Body
+
+                    </p>
+
+                    <p className="mt-1 font-semibold text-gray-900">
+
+                        {regulation.regulatoryBody}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {/* Explanation */}
+
+            <div className="mt-4 rounded-xl border border-teal-100 bg-white p-4">
+
+                <p className="text-sm leading-6 text-gray-700">
+
+                    {regulation.description}
+
+                </p>
+
+            </div>
+
+
+            {/* Official legislation */}
+
+            {regulation.actUrl && (
+
+                <a
+                    href={regulation.actUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                        mt-5
+                        inline-flex
+                        items-center
+                        font-semibold
+                        text-teal-700
+                        hover:text-teal-900
+                    "
+                >
+
+                    View official Jamaican legislation →
+
+                </a>
+
+            )}
+
+
+            {/* Compliance notice */}
+
+            <div className="mt-5 rounded-xl bg-teal-100/70 p-4">
+
+                <p className="text-xs leading-5 text-teal-900">
+
+                    Karema Kare Hub requires professional
+                    information and supporting documentation
+                    as part of its healthcare professional
+                    verification process. Professional
+                    registration and licensing requirements
+                    remain the responsibility of the healthcare
+                    professional.
+
+                </p>
+
+            </div>
+
+        </div>
+    );
 }

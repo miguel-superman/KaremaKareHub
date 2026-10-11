@@ -14,6 +14,198 @@ import Footer from './components/Footer';
 
 const App = () => {
 
+  const healthcareWorkers = [
+    {
+      profession: "Medical Doctor",
+      acts: [
+        "Medical Act",
+        "Public Health Act"
+      ]
+    },
+    {
+      profession: "Physical Therapist",
+      acts: [
+        "Professions Supplementary to Medicine Act",
+        "Public Health Act"
+      ]
+    },
+    {
+      profession: "Gerontologist",
+      acts: [
+        "Public Health Act",
+        "Nursing Homes Registration Act"
+      ]
+    },
+    {
+      profession: "Baby Sitter",
+      acts: [
+        "Public Health Act",
+        "Child Care and Protection Act"
+      ]
+    },
+    {
+      profession: "Enrolled Nurse",
+      acts: [
+        "Nurses and Midwives Act",
+        "Public Health Act"
+      ]
+    },
+    {
+      profession: "Student Nurse",
+      acts: [
+        "Nurses and Midwives Act",
+        "Public Health Act"
+      ]
+    },
+    {
+      profession: "Dietician",
+      acts: [
+        "Professions Supplementary to Medicine Act",
+        "Public Health Act"
+      ]
+    },
+    {
+      profession: "Domestic Care",
+      acts: [
+        "Public Health Act",
+        "Nursing Homes Registration Act"
+      ]
+    },
+    {
+      profession: "Pediatrician",
+      acts: [
+        "Medical Act",
+        "Public Health Act",
+        "Child Care and Protection Act"
+      ]
+    },
+    {
+      profession: "Patient Care Assistant",
+      acts: [
+        "Public Health Act",
+        "Nursing Homes Registration Act"
+      ]
+    },
+    {
+      profession: "Psychiatric Nurse",
+      acts: [
+        "Nurses and Midwives Act",
+        "Mental Health Act",
+        "Public Health Act"
+      ]
+    }
+  ];
+
+  const jamaicaHealthcareActs = [
+    {
+      id: "nurses-midwives",
+      title: "Nurses and Midwives Act",
+      shortTitle: "Nurses & Midwives Act",
+      description:
+        "Provides for the control of the training and practice of nurses, midwives and assistant nurses, including registration and related professional matters.",
+      category: "Nursing & Midwifery",
+      professions: [
+        "Registered Nurse",
+        "Assistant Nurse",
+        "Midwife",
+        "Registered Midwife"
+      ],
+      source:
+        "Ministry of Justice — Laws of Jamaica",
+      url:
+        "https://laws.moj.gov.jm/library/statute/the-nurses-and-midwives-act"
+    },
+
+    {
+      id: "medical-act",
+      title: "Medical Act",
+      shortTitle: "Medical Act",
+      description:
+        "Provides for the registration and control of medical practitioners and the regulation of the practice of medicine in Jamaica.",
+      category: "Medical Practice",
+      professions: [
+        "Medical Doctor",
+        "Medical Practitioner",
+        "Doctor"
+      ],
+      source:
+        "Ministry of Justice — Laws of Jamaica",
+      url:
+        "https://laws.moj.gov.jm/library/statute/the-medical-act"
+    },
+
+    {
+      id: "professions-supplementary",
+      title: "Professions Supplementary to Medicine Act",
+      shortTitle: "Professions Supplementary to Medicine Act",
+      description:
+        "Provides for the registration, training and regulation of professionals in specified professions supplementary to medicine.",
+      category: "Allied Health",
+      professions: [
+        "Medical Laboratory Technologist",
+        "Radiographer",
+        "Physiotherapist",
+        "Occupational Therapist",
+        "Dietitian",
+        "Speech Therapist",
+        "Public Health Inspector"
+      ],
+      source:
+        "Ministry of Justice — Laws of Jamaica",
+      url:
+        "https://laws.moj.gov.jm/library/statute/the-professions-supplementary-to-medicine-act"
+    },
+
+    {
+      id: "public-health",
+      title: "Public Health Act",
+      shortTitle: "Public Health Act",
+      description:
+        "Provides for the promotion of public health and the prevention and control of communicable and epidemic diseases.",
+      category: "Public Health",
+      professions: [
+        "Registered Nurse",
+        "Assistant Nurse",
+        "Midwife",
+        "Medical Doctor",
+        "Medical Practitioner",
+        "Physiotherapist",
+        "Occupational Therapist",
+        "Medical Laboratory Technologist",
+        "Radiographer",
+        "Dietitian",
+        "Speech Therapist",
+        "Public Health Inspector"
+      ],
+      source:
+        "Ministry of Justice — Laws of Jamaica",
+      url:
+        "https://laws.moj.gov.jm/library/statute/the-public-health-act"
+    },
+
+    {
+      id: "nursing-homes",
+      title: "Nursing Homes Registration Act",
+      shortTitle: "Nursing Homes Registration Act",
+      description:
+        "Provides for the registration and regulation of nursing homes and related care facilities.",
+      category: "Healthcare Facilities",
+      professions: [
+        "Registered Nurse",
+        "Assistant Nurse",
+        "Midwife",
+        "Caregiver",
+        "Home Care Worker"
+      ],
+      source:
+        "Ministry of Health & Wellness, Jamaica",
+      url:
+        "https://www.moh.gov.jm/standards-and-regulation-division/legislative-framework"
+    }
+  ];
+
+
+
   const latestNews = [
     {
       id: 1,
@@ -565,6 +757,133 @@ const App = () => {
       </section>
 
       {/* News & Learning */}
+      <section className="pb-24 mx-4">
+
+        <div className="max-w-7xl mx-auto">
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+
+            <div>
+
+              <Badge className="mb-3 bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0">
+                <Newspaper className="h-3 w-3 mr-1" />
+                Professional Resources
+              </Badge>
+
+              <h2 className="text-3xl font-bold text-slate-900">
+                Healthcare News & Learning
+              </h2>
+
+              <p className="text-slate-600 mt-2 max-w-2xl">
+                Stay informed about Jamaican healthcare legislation,
+                professional standards and important industry updates.
+              </p>
+
+            </div>
+
+            <Link href="/news">
+              <Button variant="outline" className="mt-4 md:mt-0">
+                View All
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+
+          </div>
+
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {jamaicaHealthcareActs.map((act) => (
+
+              <Card
+                key={act.id}
+                className="group overflow-hidden border-emerald-100 hover:border-emerald-300 hover:shadow-xl transition-all duration-300"
+              >
+
+                <CardContent className="p-6">
+
+                  <div className="flex items-start justify-between">
+
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+
+                      <ShieldCheck className="h-6 w-6 text-emerald-600" />
+
+                    </div>
+
+                    <Badge className="bg-emerald-50 text-emerald-700 hover:bg-emerald-50 border-0">
+                      {act.category}
+                    </Badge>
+
+                  </div>
+
+
+                  <h3 className="text-xl font-bold text-slate-900 mt-6">
+                    {act.title}
+                  </h3>
+
+
+                  <p className="text-slate-600 mt-3 leading-relaxed">
+                    {act.description}
+                  </p>
+
+
+                  <div className="mt-5">
+
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                      Applies to
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-2">
+
+                      {act.professions
+                        
+                        .map((profession) => (
+
+                          <Badge
+                            key={profession}
+                            variant="outline"
+                            className="text-xs"
+                          >
+                            {profession}
+                          </Badge>
+
+                        ))}
+
+                    </div>
+
+                  </div>
+
+
+                  <div className="mt-6 pt-5 border-t border-slate-100">
+
+                    <a
+                      href={act.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+                    >
+
+                      Read Official Act
+
+                      <ArrowRight
+                        className="h-4 w-4 group-hover:translate-x-1 transition-transform"
+                      />
+
+                    </a>
+
+                  </div>
+
+                </CardContent>
+
+              </Card>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
 
       <section className="pb-24 mx-4">
 {/* 
