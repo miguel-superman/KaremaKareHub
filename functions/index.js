@@ -216,7 +216,7 @@ exports.notifyNewHealthcareWorker = onDocumentCreated(
             >
 
             <img
-                src="https://karemakarehubbackend.web.app/klogo.jpeg"
+                src="https://karemakarehubbackend.web.app/favicon.ico"
                 alt="Karema Kare Hub"
                 width="220"
                 style="

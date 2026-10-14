@@ -326,8 +326,14 @@ export default function Step2Personal({
         businessEmail: data?.businessEmail || "",
 
         // Address
+        // address: data?.address || "",
+        // city: data?.city || "",
+        // parish: data?.parish || "",
+
+        // Address
         address: data?.address || "",
         city: data?.city || "",
+        country: data?.country || "Jamaica",
         parish: data?.parish || "",
 
         // Individual emergency contact
@@ -345,13 +351,27 @@ export default function Step2Personal({
 
 
 
+    // function updateField(e) {
+
+    //     setForm(prev => ({
+    //         ...prev,
+    //         [e.target.name]: e.target.value
+    //     }));
+
+    // }
+
     function updateField(e) {
+        const { name, value } = e.target;
 
         setForm(prev => ({
             ...prev,
-            [e.target.name]: e.target.value
+            [name]: value,
+
+            // Clear the region when the country changes
+            ...(name === "country" ? { parish: "" } : {})
         }));
 
+        setError("");
     }
 
 
@@ -454,12 +474,16 @@ export default function Step2Personal({
 
             }
 
-            if (!form.parish) {
+            // if (!form.parish) {
 
-                setError("Please select your parish.");
+            //     setError("Please select your parish.");
 
+            //     return;
+
+            // }
+            if (!form.parish.trim()) {
+                setError(`Please select or enter your ${getRegionLabel(form.country).toLowerCase()}.`);
                 return;
-
             }
 
         }
@@ -1020,7 +1044,7 @@ export default function Step2Personal({
                             </div>
 
 
-                            <div className="
+                            {/* <div className="
                             grid
                             md:grid-cols-2
                             gap-6
@@ -1070,6 +1094,49 @@ export default function Step2Personal({
                                         onChange={updateField}
                                     />
 
+                                </div>
+
+                            </div> */}
+                            <div className="grid md:grid-cols-2 gap-6 mt-6">
+
+                                {/* Country */}
+                                <div>
+                                    <label className="font-medium">
+                                        Country
+                                    </label>
+
+                                    <CountrySelect
+                                        value={form.country}
+                                        onChange={updateField}
+                                    />
+                                </div>
+
+                                {/* City */}
+                                <div>
+                                    <label className="font-medium">
+                                        City / Town
+                                    </label>
+
+                                    <input
+                                        name="city"
+                                        value={form.city}
+                                        onChange={updateField}
+                                        placeholder="Enter your city or town"
+                                        className="w-full mt-2 border rounded-lg h-12 px-4"
+                                    />
+                                </div>
+
+                                {/* State / Parish / Province */}
+                                <div>
+                                    <label className="font-medium">
+                                        {getRegionLabel(form.country)}
+                                    </label>
+
+                                    <RegionSelect
+                                        country={form.country}
+                                        value={form.parish}
+                                        onChange={updateField}
+                                    />
                                 </div>
 
                             </div>
@@ -1598,55 +1665,402 @@ export default function Step2Personal({
 /* PARISH SELECT */
 /* ========================================================= */
 
-function ParishSelect({
-    value,
-    onChange
-}) {
+
+const COUNTRY_OPTIONS = [
+    "Jamaica",
+    "United States",
+    "Canada",
+    "United Kingdom",
+    "Australia",
+    "New Zealand",
+    "Trinidad and Tobago",
+    "Barbados",
+    "The Bahamas",
+    "India",
+    "Nigeria",
+    "South Africa",
+    "Other"
+];
+
+const REGIONS_BY_COUNTRY = {
+    Jamaica: [
+        "Kingston",
+        "St. Andrew",
+        "St. Catherine",
+        "Clarendon",
+        "Manchester",
+        "St. Elizabeth",
+        "Westmoreland",
+        "Hanover",
+        "St. James",
+        "Trelawny",
+        "St. Ann",
+        "St. Mary",
+        "Portland",
+        "St. Thomas"
+    ],
+
+    "United States": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+    ],
+
+    Canada: [
+        "Alberta",
+        "British Columbia",
+        "Manitoba",
+        "New Brunswick",
+        "Newfoundland and Labrador",
+        "Northwest Territories",
+        "Nova Scotia",
+        "Nunavut",
+        "Ontario",
+        "Prince Edward Island",
+        "Quebec",
+        "Saskatchewan",
+        "Yukon"
+    ],
+
+    "United Kingdom": [
+        "England",
+        "Scotland",
+        "Wales",
+        "Northern Ireland"
+    ],
+
+    Australia: [
+        "Australian Capital Territory",
+        "New South Wales",
+        "Northern Territory",
+        "Queensland",
+        "South Australia",
+        "Tasmania",
+        "Victoria",
+        "Western Australia"
+    ],
+
+    "New Zealand": [
+        "Auckland",
+        "Bay of Plenty",
+        "Canterbury",
+        "Gisborne",
+        "Hawke's Bay",
+        "Manawatū-Whanganui",
+        "Marlborough",
+        "Nelson",
+        "Northland",
+        "Otago",
+        "Southland",
+        "Taranaki",
+        "Tasman",
+        "Waikato",
+        "Wellington",
+        "West Coast"
+    ],
+
+    "Trinidad and Tobago": [
+        "Arima",
+        "Chaguanas",
+        "Couva-Tabaquite-Talparo",
+        "Diego Martin",
+        "Mayaro-Rio Claro",
+        "Penal-Debe",
+        "Point Fortin",
+        "Port of Spain",
+        "Princes Town",
+        "San Fernando",
+        "San Juan-Laventille",
+        "Sangre Grande",
+        "Siparia",
+        "Tunapuna-Piarco",
+        "Tobago"
+    ],
+
+    Barbados: [
+        "Christ Church",
+        "St. Andrew",
+        "St. George",
+        "St. James",
+        "St. John",
+        "St. Joseph",
+        "St. Lucy",
+        "St. Michael",
+        "St. Peter",
+        "St. Philip",
+        "St. Thomas"
+    ],
+
+    "The Bahamas": [
+        "New Providence",
+        "Grand Bahama",
+        "Abaco",
+        "Acklins",
+        "Andros",
+        "Berry Islands",
+        "Bimini",
+        "Cat Island",
+        "Eleuthera",
+        "Exuma",
+        "Inagua",
+        "Long Island",
+        "Mayaguana",
+        "Ragged Island",
+        "Rum Cay",
+        "San Salvador"
+    ],
+
+    India: [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal",
+        "Delhi",
+        "Jammu and Kashmir",
+        "Ladakh",
+        "Puducherry"
+    ],
+
+    Nigeria: [
+        "Abia",
+        "Adamawa",
+        "Akwa Ibom",
+        "Anambra",
+        "Bauchi",
+        "Bayelsa",
+        "Benue",
+        "Borno",
+        "Cross River",
+        "Delta",
+        "Ebonyi",
+        "Edo",
+        "Ekiti",
+        "Enugu",
+        "FCT Abuja",
+        "Gombe",
+        "Imo",
+        "Jigawa",
+        "Kaduna",
+        "Kano",
+        "Katsina",
+        "Kebbi",
+        "Kogi",
+        "Kwara",
+        "Lagos",
+        "Nasarawa",
+        "Niger",
+        "Ogun",
+        "Ondo",
+        "Osun",
+        "Oyo",
+        "Plateau",
+        "Rivers",
+        "Sokoto",
+        "Taraba",
+        "Yobe",
+        "Zamfara"
+    ],
+
+    "South Africa": [
+        "Eastern Cape",
+        "Free State",
+        "Gauteng",
+        "KwaZulu-Natal",
+        "Limpopo",
+        "Mpumalanga",
+        "North West",
+        "Northern Cape",
+        "Western Cape"
+    ]
+};
+
+function getRegionLabel(country) {
+    if (country === "Jamaica") return "Parish";
+    if (country === "United States") return "State";
+    if (country === "Canada") return "Province / Territory";
+    if (country === "United Kingdom") return "Country / Region";
+    if (country === "Australia") return "State / Territory";
+
+    return "State / Province / Region";
+}
+
+function CountrySelect({ value, onChange }) {
+    return (
+        <select
+            name="country"
+            value={value}
+            onChange={onChange}
+            className="w-full mt-2 border rounded-lg h-12 px-4 bg-white"
+        >
+            <option value="">Select Country</option>
+
+            {COUNTRY_OPTIONS.map(country => (
+                <option key={country} value={country}>
+                    {country}
+                </option>
+            ))}
+        </select>
+    );
+}
+
+function RegionSelect({ country, value, onChange }) {
+    const regions = REGIONS_BY_COUNTRY[country];
+
+    // For countries without a predefined region list,
+    // allow the user to enter their region manually.
+    if (!regions) {
+        return (
+            <input
+                name="parish"
+                value={value}
+                onChange={onChange}
+                placeholder="Enter state, province or region"
+                className="w-full mt-2 border rounded-lg h-12 px-4"
+            />
+        );
+    }
 
     return (
-
         <select
-
             name="parish"
-
             value={value}
-
             onChange={onChange}
-
-            className="
-            w-full
-            mt-2
-            border
-            rounded-lg
-            h-12
-            px-4
-            "
-
+            className="w-full mt-2 border rounded-lg h-12 px-4 bg-white"
         >
-
             <option value="">
-
-                Select Parish
-
+                Select {getRegionLabel(country)}
             </option>
 
-            <option>Kingston</option>
-            <option>St. Andrew</option>
-            <option>St. Catherine</option>
-            <option>Clarendon</option>
-            <option>Manchester</option>
-            <option>St. Elizabeth</option>
-            <option>Westmoreland</option>
-            <option>Hanover</option>
-            <option>St. James</option>
-            <option>Trelawny</option>
-            <option>St. Ann</option>
-            <option>St. Mary</option>
-            <option>Portland</option>
-            <option>St. Thomas</option>
-
+            {regions.map(region => (
+                <option key={region} value={region}>
+                    {region}
+                </option>
+            ))}
         </select>
-
     );
-
 }
+
+// function ParishSelect({
+//     value,
+//     onChange
+// }) {
+
+//     return (
+
+//         <select
+
+//             name="parish"
+
+//             value={value}
+
+//             onChange={onChange}
+
+//             className="
+//             w-full
+//             mt-2
+//             border
+//             rounded-lg
+//             h-12
+//             px-4
+//             "
+
+//         >
+
+//             <option value="">
+
+//                 Select Parish
+
+//             </option>
+
+//             <option>Kingston</option>
+//             <option>St. Andrew</option>
+//             <option>St. Catherine</option>
+//             <option>Clarendon</option>
+//             <option>Manchester</option>
+//             <option>St. Elizabeth</option>
+//             <option>Westmoreland</option>
+//             <option>Hanover</option>
+//             <option>St. James</option>
+//             <option>Trelawny</option>
+//             <option>St. Ann</option>
+//             <option>St. Mary</option>
+//             <option>Portland</option>
+//             <option>St. Thomas</option>
+
+//         </select>
+
+//     );
+
+// }
